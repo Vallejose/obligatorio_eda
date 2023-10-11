@@ -10,6 +10,8 @@
 // directorio.h
 // Modulo de Definición de directorio.
 
+typedef struct nodo_archivos * archivos;
+
 typedef struct nodo_directorio * directorio;
 
 directorio Crear_Directorio(Cadena nombre);

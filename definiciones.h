@@ -10,10 +10,12 @@
 
 #define MAX_COMANDO 50
 #define MAX_NOMBRE 15
+#define MAX_EXT 3
 
 enum _retorno{ OK, ERROR, NO_IMPLEMENTADA};
 typedef enum _retorno TipoRet;
 
 typedef char* Cadena;
+typedef char * extencion;
 
 #endif

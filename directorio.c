@@ -11,9 +11,15 @@
 
 #include <string.h>
 
+struct nodo_archivos{
+	Cadena nombre;
+	extencion ext;
+};
+	
+
 struct nodo_directorio{
 	// directorios ver seg entrega
-	// archivos archs;
+	archivos archs;
 	Cadena nombre;
 };
 
