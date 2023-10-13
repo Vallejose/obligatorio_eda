@@ -26,17 +26,11 @@ struct _sistema{
 TipoRet CREARSISTEMA(Sistema &s){
 // Inicializa el sistema para que contenga únicamente al directorio RAIZ, sin subdirectorios ni archivos.
 // Para mas detalles ver letra.
-cout << "0\n";
 	s = new(_sistema);
-cout << "1\n";
 	Cadena nombre = new char[MAX_NOMBRE];
-cout << "2\n";
 	strcpy(nombre, "RAIZ");
-cout << "3\n";
 	s->raiz = Crear_Directorio(nombre);
-cout << "4\n";
 	s->actual = s->raiz;
-cout << "5\n";
 	return OK;
 }
 
