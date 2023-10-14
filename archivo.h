@@ -1,21 +1,19 @@
-#ifndef DIRECTORIO_H
-#define DIRECTORIO_H
+#ifndef ARCHOIVO_H
+#define ARCCHIVO_H
 
 #include "definiciones.h"
-
-// Estructuras de Datos y Algoritmos - Curso 2023
+//Estructura de datos y algoritmos - curso 2023
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
 // Trabajo Obligatorio
 // archivo.h
-// Modulo de Definición de directorio.
+// Modulo de Definición de archivo.
 
-typedef struct nodo_archivos * archivos;
 
-typedef struct nodo_archivo * archivo;
+typedef struct _archivo * archivo;
 
-archivo Crear_Archivo(Cadena nombre);
-// Retorna un archivo de nombre "nombre".
+archivo Crear_archivo(Cadena nombre, Cadena exten);
+//Retorna un archivo de nombre archivo y extencion ext
 
 
 #endif

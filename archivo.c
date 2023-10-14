@@ -1,34 +1,32 @@
-// Estructuras de Datos y Algoritmos - Curso 2023
-// Tecnologo en Informatica FIng - DGETP - UTEC
-//
-// Trabajo Obligatorio
-// directorio.c
-// Modulo de Implementacion de directorio.
+//Estructura de datos y algoritmos - curso 2023
+//Tecnologo en informatica FING - DGETP - UTEC
 
-#include "directorio.h"
+//Trabajo obligatorio
+//archivo.c
+//Modulo de implementacion de archivo.
+
+#include <tring.h>
+#include <iostream.h>
 #include "definiciones.h"
-#include "archivo.h"
 
+using namespace std;
 
-#include <string.h>
-
-struct nodo_archivo{
-	Cadena nombreArchivo;
-	Cadena ext;
-	bool lectura;
+struct _archivo{
+	Cadena nombre;
+	Cadena exten;
 	bool escritura;
-	//Falta ver el tema del contenidio??
-	archivo siguiente;
+	//contenido contenido; //Implemetar
 };
 
-archivo Crear_Archivo(Cadena nombre){
-	//Rertorna un archivo con el nombre 'nombre'.	
-	
-	archivo a = new(nodo_archivo);
-	a->nombreArchivo = new char[MAX_NOMBRE];
-	stpcpy(a->nombre, nombre);
-	a->lectura = true;
-	a->escritura = true;
-	a->ext = '.txt';
-	return a;
+
+archivo Crear_archivo(Cadena nombre, Cadena exten){
+//Retorna un archivo de nombre archivo y extencion ext
+	archivo ar = new(_archivo);
+	ar->nombre = new char[MAX_NOMBRE];
+	stpcpy(ar->nombre, nombre);
+	ar->exten = new char(MAX_EXT];
+	strcpy(ar->exten,exten;
+	ar->escritura = true
+	//ar->contenido = ??
+	return ar;
 }

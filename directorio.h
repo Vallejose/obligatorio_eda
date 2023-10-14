@@ -2,6 +2,7 @@
 #define DIRECTORIO_H
 
 #include "definiciones.h"
+#include "archivos.h"
 
 // Estructuras de Datos y Algoritmos - Curso 2023
 // Tecnologo en Informatica FIng - DGETP - UTEC
