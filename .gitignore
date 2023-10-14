@@ -7,3 +7,5 @@
 
 #archivos de compilacion
 *.o
+
+main
