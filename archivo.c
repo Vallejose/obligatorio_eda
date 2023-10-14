@@ -13,11 +13,22 @@
 #include <string.h>
 
 struct nodo_archivo{
-	Cadena nombre[MAX_NOMBRE];
-	Cadena ext[MAX_EXTENCION];
+	Cadena nombreArchivo;
+	Cadena ext;
 	bool lectura;
 	bool escritura;
 	//Falta ver el tema del contenidio??
 	archivo siguiente;
-	archivo actual;
 };
+
+archivo Crear_Archivo(Cadena nombre){
+	//Rertorna un archivo con el nombre 'nombre'.	
+	
+	archivo a = new(nodo_archivo);
+	a->nombreArchivo = new char[MAX_NOMBRE];
+	stpcpy(a->nombre, nombre);
+	a->lectura = true;
+	a->escritura = true;
+	a->ext = '.txt';
+	return a;
+}

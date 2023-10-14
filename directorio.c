@@ -7,13 +7,15 @@
 
 #include "directorio.h"
 #include "definiciones.h"
+#include "archivo.h"
 
 
 #include <string.h>
 
+
 struct nodo_directorio{
 	// directorios ver seg entrega
-	// archivos archs;
+	archivos arch;
 	Cadena nombre;
 };
 
@@ -22,5 +24,16 @@ directorio Crear_Directorio(Cadena nombre){
 	directorio d = new(nodo_directorio);
 	d->nombre = new char[MAX_NOMBRE];
 	strcpy(d->nombre, nombre);
+	d->archivos = NULL;
 	return d;
 }
+
+archivos Crear_Archivos(){
+	return NULL;
+}
+
+archivo Crear_Archivo(Cadena nombre, directorio direc_act){
+	//Rertorna un archivo con el nombre 'nombre'.
+	if(direc_act->archivos != NULL){
+		if(direc_act->archivos->nombre != nombre && ){
+			

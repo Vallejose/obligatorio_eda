@@ -10,6 +10,8 @@
 // archivo.h
 // Modulo de Definición de directorio.
 
+typedef struct nodo_archivos * archivos;
+
 typedef struct nodo_archivo * archivo;
 
 archivo Crear_Archivo(Cadena nombre);
