@@ -8,6 +8,7 @@
 #include <tring.h>
 #include <iostream.h>
 #include "definiciones.h"
+#include "contenido.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ struct _archivo{
 	Cadena nombre;
 	Cadena exten;
 	bool escritura;
-	//contenido contenido; //Implemetar
+	contenido contenido; //Terminar de implemetar
 };
 
 
