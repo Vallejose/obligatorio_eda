@@ -16,7 +16,8 @@ struct nodo_contenido{
 };
 
 
-archivo Crear_contenido(Cadena nombre, Cadena exten){
+archivo Crear_contenido(){
 //Retorna un contenido para un archivo
-
+	contenido cont = new(nodo_contenido);
+	cont->contenido = new char[MAX_CONT];
 }

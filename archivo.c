@@ -20,14 +20,14 @@ struct _archivo{
 };
 
 
-archivo Crear_archivo(Cadena nombre, Cadena exten){
+archivo Crear_archivo(Cadena nombre){
 //Retorna un archivo de nombre archivo y extencion ext
 	archivo ar = new(_archivo);
 	ar->nombre = new char[MAX_NOMBRE];
 	stpcpy(ar->nombre, nombre);
 	ar->exten = new char(MAX_EXT];
-	strcpy(ar->exten,exten;
+	strcpy(ar->exten,'txt');
 	ar->escritura = true
-	//ar->contenido = ??
+	Crear_contenido();
 	return ar;
 }

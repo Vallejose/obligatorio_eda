@@ -17,12 +17,21 @@ struct nodo_archivos{
 	archivo siguiente;
 };
 
-archivos Crear_archivos(archivos &a){ 
+archivos Crear_archivos(archivos a){ 
 //Revisaro bien, nose si le tentgo que pasar parametros a la funcion y por que por referencia
 //Inicializa la lista de archivos que contendra cada archivo
 	a = new(nodo_archivos);
 	//a->archivo = Crear_archivo(nombre, exten);
 	a->siguiente = a->archivo;
 	return a;
+}
+
+archivos Iterar_archivos(archivos a)[
+	if(a == NULL)
+		return NULL;
+	else if(a->siguiente == NULL)
+		return NULL;
+	else
+		return a->sig;
 }
 	
