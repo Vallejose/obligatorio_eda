@@ -50,6 +50,7 @@ archivo Crear_archivo(Cadena nombreArch, archivo a){
 	aux->exten = new char[MAX_EXT];
 	strcpy(aux->exten, "txt");
 	aux->escritura = true;
+	//aux->cont = new char[MAX_CONT]
 	//aux->cont = Null_contenido();
 	return aux;
 }
