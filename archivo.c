@@ -19,6 +19,7 @@ struct _archivo{
 	contenido cont; //Terminar de implemetar
 };
 
+int a = 0;
 
 archivo Null_archivo(){
 //Retorna un archivo a vacio.
