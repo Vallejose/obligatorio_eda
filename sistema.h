@@ -9,7 +9,11 @@
 // Modulo de Definición del File System.
 
 
-#include "definiciones.h"
+#include "sistema.h"
+#include "directorio.h"
+#include "archivos.h"
+#include "archivo.h"
+#include "contenido.h"
 
 typedef struct _sistema * Sistema;
 

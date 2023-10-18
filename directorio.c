@@ -8,15 +8,18 @@
 #include "directorio.h"
 #include "definiciones.h"
 #include "archivos.h"
+#include "archivo.c"
 
 #include <string.h>
 
 
 struct nodo_directorio{
 	// directorios ver seg entrega
-	archivos archs;
+	list_archivos archs;
 	Cadena nombre;
 };
+
+
 
 directorio Crear_Directorio(Cadena nombre){
 // Retorna un directorio de nombre "nombre".

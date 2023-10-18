@@ -12,6 +12,16 @@
 
 typedef struct nodo_contenidio * contenido;
 
+contenido Null_contenido();
+// Retorna uncontenido vacio
+
+contenido Return_contenido(contenido c);
+//Retorna el contenido del objeto contenido c.
+
+
+bool IsNull_contenido(contenido c);
+
+
 archivo Crear_contenido(Cadena nombre, Cadena exten);
 //Retorna un contenido para un archivo
 

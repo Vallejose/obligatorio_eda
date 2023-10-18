@@ -7,6 +7,9 @@
 
 #include "sistema.h"
 #include "directorio.h"
+#include "archivos.h"
+#include "archivo.h"
+#include "contenido.h"
 
 #include <string.h>
 
@@ -73,16 +76,16 @@ TipoRet DIR (Sistema &s, Cadena parametro){
 TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
-	if(s->actual->arch == NULL){
-		Crear_archivos()
+	/*if(s->actual->arch == NULL){
+		Crear_archivos();
 		Crear_archivo(nombreArchivo);
 		return OK;
 	}else if(s->actual->arch-> nombre == nombreArchivo)
-		return ERROR,_EL_ARCHIVO_YA_EXISTE;
-	else {
-		Iterar_archivos(s->actual->arch)
+		return ERROR;
+	else 
+		Iterar_archivos(s->actual->arch);
 		
-	
+	*/
 	return NO_IMPLEMENTADA;
 }
 

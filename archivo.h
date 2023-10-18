@@ -12,8 +12,33 @@
 
 typedef struct _archivo * archivo;
 
-archivo Crear_archivo(Cadena nombre, Cadena exten);
-//Retorna un archivo de nombre archivo y extencion ext
+archivo Null_archivo();
+//Retorna un archivo a vacio.
 
+
+Cadena Nombre_archivo(archivo a);
+//Retorna el nombre del archivo a.
+//Pre: a no es vacio.
+
+
+Cadena Extencion_archivo(archivo a);
+//Retorna la extencion del archivo a.
+//Pre: a no es vacio.
+
+
+bool Escritura_archivo(archivo a);
+//Retorna true si se puede escribir el archivo y false en caso contrario
+
+
+archivo Crear_archivo(Cadena nombreArch, archivo a);
+//Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
+
+
+bool IsNull_archivo(archivo a);
+// retorna true si el archivo a esta vacio y false en caso contrario
+
+
+archivo Eliminar_archivo(archivo a);
+//Elimina el archivo a y libera la memoria
 
 #endif
