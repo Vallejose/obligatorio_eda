@@ -21,9 +21,9 @@ contenido Return_contenido(contenido c);
 
 bool IsNull_contenido(contenido c);
 
-
-archivo Crear_contenido(Cadena nombre, Cadena exten);
+/*
+archivo Crear_contenido();
 //Retorna un contenido para un archivo
-
+*/
 
 #endif

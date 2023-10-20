@@ -2,13 +2,15 @@
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
 // Trabajo Obligatorio
-// directorio.c
+// listArchivoso.c
 // Modulo de Implementacion de directorio.
 
 #include <string.h>
+#include <iostream>
 #include "definiciones.h"
+#include "listArchivos.h"
 #include "archivo.h"
-#include "archivos.h"
+#include "contenido.h"
 
 using namespace std;
 
@@ -28,13 +30,13 @@ archivo Head_listArchivos(list_archivos ar){
 	return ar->archivo;
 }
 
-list_archivos Tail_listArchivos(list_archivos ar){
+archivo Tail_listArchivos(list_archivos ar){
 //Retorna la lista de archivos ar pero sin el primer elemento.
 //Pre: ar no es vacia.
 	return ar->siguiente;
 }
 
-list_archivos Cons_listArchivos(archivo a, list_archivos ar){
+list_archivos Cons_listArchivos(archivo a, list_archivos &ar){
 //Inserta un archivo a al principio de ar
 	list_archivos aux = new(nodo_listArchivos);
 	aux->archivo = a;
@@ -42,11 +44,11 @@ list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 	return aux;
 }
 
-
+/*
  bool IsEmpty_listArchivos(list_archivos ar){
 //Retorna true si ar es vacia y false en caso contrario;
 	return(ar==NULL);
- }
+ }*/
  
  list_archivos Destruir_listArchivos(list_archivos ar){
 //Destruye ar y libera la memoria asociada.

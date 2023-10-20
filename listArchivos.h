@@ -7,10 +7,9 @@
 // Trabajo Obligatorio
 // archivos.h
 // Modulo de Definición de Archivos.
-
 #include "definiciones.h"
 #include "archivo.h"
-
+#include "contenido.h"
 typedef struct nodo_listArchivos * list_archivos;
 
 
@@ -32,9 +31,9 @@ list_archivos Tail_listArchivos(list_archivos ar);
 list_archivos Cons_listArchivos(archivo a, list_archivos ar);
 //Inserta un archivo a al principio de ar
 
-
+/*
 bool IsEmpty_listArchivos(list_archivos ar);
-//Retorna true si ar es vacia y false en caso contrario;
+//Retorna true si ar es vacia y false en caso contrario;*/
 
  
 list_archivos Destruir_listArchivos(list_archivos ar);

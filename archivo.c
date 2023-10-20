@@ -6,9 +6,10 @@
 //Modulo de implementacion de archivo.
 
 #include <string.h>
+#include <iostream>
 #include "definiciones.h"
 #include "archivo.h"
-#include "contenido.h"
+#include "contenido.h
 
 using namespace std;
 
@@ -43,7 +44,7 @@ bool Escritura_archivo(archivo a){
 	return a->escritura;
 }
 
-archivo Crear_archivo(Cadena nombreArch, archivo a){
+archivo Crear_archivo(Cadena nombreArch){
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
 	archivo aux = new(_archivo);
 	aux->nombre = new char[MAX_NOMBRE];
@@ -52,7 +53,7 @@ archivo Crear_archivo(Cadena nombreArch, archivo a){
 	strcpy(aux->exten, "txt");
 	aux->escritura = true;
 	//aux->cont = new char[MAX_CONT]
-	//aux->cont = Null_contenido();
+	aux->cont = NULL;
 	return aux;
 }
 
