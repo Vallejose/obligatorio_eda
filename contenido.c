@@ -5,15 +5,15 @@
 //contenido.c
 //Modulo de implementacion de contenido.
 
-#include <sring.h>
-#include <iostream.h>
+#include <string.h>
+#include <iostream>
 #include "definiciones.h"
 #include "contenido.h"
 
 using namespace std;
 
 struct nodo_contenido{
-	Cadena contenido;
+	Cadena cont;
 };
 
 contenido Null_contenido(){
@@ -21,9 +21,9 @@ contenido Null_contenido(){
 	return NULL;
 }
 
-contenido Return_contenido(contenido c){
-//Retorna el contenido del objeto contenido c.
-	return c->contenido;
+Cadena Retorna_contenido(contenido c){
+//Retorna el contenido c.
+	return c->cont;
 }
 
 bool IsNull_contenido(contenido c){
@@ -34,9 +34,9 @@ bool IsNull_contenido(contenido c){
 //Crear contenido
 //Eliminar archivo
 
-
+/*
 archivo Crear_contenido(){
 //Retorna un contenido para un archivo
 	contenido cont = new(nodo_contenido);
 	cont->contenido = new char[MAX_CONT];
-}
+}*/

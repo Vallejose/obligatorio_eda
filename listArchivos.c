@@ -2,19 +2,21 @@
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
 // Trabajo Obligatorio
-// directorio.c
+// listArchivoso.c
 // Modulo de Implementacion de directorio.
 
 #include <string.h>
+#include <iostream>
 #include "definiciones.h"
+#include "listArchivos.h"
 #include "archivo.h"
-#include "archivos.h"
+#include "contenido.h"
 
 using namespace std;
 
 struct nodo_listArchivos{
-	archivo archivo;
-	archivo siguiente;
+	archivo archs;
+	list_archivos siguiente;
 };
 
 list_archivos Null_listArchivos(){
@@ -25,7 +27,7 @@ list_archivos Null_listArchivos(){
 archivo Head_listArchivos(list_archivos ar){
 //Retorna el el primer archivo de la lista de archivos
 //Pre: ar no es vacia.
-	return ar->archivo;
+	return ar->archs;
 }
 
 list_archivos Tail_listArchivos(list_archivos ar){
@@ -34,10 +36,10 @@ list_archivos Tail_listArchivos(list_archivos ar){
 	return ar->siguiente;
 }
 
-list_archivos Cons_listArchivos(archivo a, list_archivos ar){
+list_archivos Cons_listArchivos(archivo a, list_archivos &ar){
 //Inserta un archivo a al principio de ar
 	list_archivos aux = new(nodo_listArchivos);
-	aux->archivo = a;
+	aux->archs = a;
 	aux->siguiente = ar;
 	return aux;
 }
@@ -48,7 +50,7 @@ list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 	return(ar==NULL);
  }
  
- list_archivos Destruir_listArchivos(list_archivos ar){
+ /*list_archivos Destruir_listArchivos(list_archivos ar){
 //Destruye ar y libera la memoria asociada.
 //De manera recursiva.
 		if(ar == NULL)
@@ -58,13 +60,13 @@ list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 			delete ar;
 		}
 		return ar;
- }
+ }*/
 
 list_archivos Crear_listArchivos(list_archivos a){ 
 //Revisaro bien, nose si le tentgo que pasar parametros a la funcion y por que por referencia
 //Inicializa la lista de archivos que contendra cada archivo
 	a = new(nodo_listArchivos);
 	//a->archivo = Crear_archivo(nombre, exten);
-	a->siguiente = a->archivo;
+	a->siguiente = NULL;
 	return a;
 }

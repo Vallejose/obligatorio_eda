@@ -5,15 +5,14 @@
 // sistema.c
 // Modulo de Implementacion del File System.
 
+#include "contenido.h"
+#include <string.h>
+#include <iostream>
 #include "sistema.h"
 #include "directorio.h"
-#include "archivos.h"
+#include "listArchivos.h"
 #include "archivo.h"
-#include "contenido.h"
 
-#include <string.h>
-
-#include <iostream>
 
 using namespace std;
 
@@ -76,17 +75,36 @@ TipoRet DIR (Sistema &s, Cadena parametro){
 TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
-	/*if(s->actual->arch == NULL){
-		Crear_archivos();
-		Crear_archivo(nombreArchivo);
+
+	/*if((Dir_act(s)) == s->actual){
+		cout << nombreArchivo ;
 		return OK;
-	}else if(s->actual->arch-> nombre == nombreArchivo)
+	}else
 		return ERROR;
-	else 
-		Iterar_archivos(s->actual->arch);
-		
 	*/
-	return NO_IMPLEMENTADA;
+
+
+	if(IsEmpty_listArchivos(listArchs(Dir_act(s)))){
+		Cons_listArchivos(Crear_archivo(nombreArchivo), listArchs(Dir_act(s)));
+		return OK;
+	} else if (existe_arch(listArchs(Dir_act(s)), nombreArchivo)){	
+		return ERROR;
+	} else {
+		Cons_listArchivos(Crear_archivo(nombreArchivo), listArchs(Dir_act(s)));
+		return OK;
+	}	
+}
+
+bool existe_arch(list_archivos l, Cadena nombreAr){
+	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
+	//Pre: lista no es vacia
+	
+	if(Nombre_archivo(Head_listArchivos(l)) == nombreAr)
+		return true;
+	else if (Tail_listArchivos(l) == NULL)
+		return false;
+	else 
+		return existe_arch(Tail_listArchivos(l), nombreAr);
 }
 
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo){
@@ -141,6 +159,11 @@ TipoRet REPLACE (Sistema &s, Cadena nombreArchivo, Cadena texto1, Cadena texto2)
 // Busca y reemplaza dentro del archivo la existencia del texto1 por el texto2. 
 // Para mas detalles ver letra.
 	return NO_IMPLEMENTADA;
+}
+
+directorio Dir_act(Sistema s){
+//retorna el directorio actual del sistema s-
+	return s->actual;
 }
 
 

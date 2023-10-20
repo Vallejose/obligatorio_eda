@@ -1,7 +1,8 @@
-#ifndef ARCHOIVO_H
-#define ARCCHIVO_H
+#ifndef ARCHIVO_H
+#define ARCHIVO_H
 
 #include "definiciones.h"
+#include "contenido.h"
 //Estructura de datos y algoritmos - curso 2023
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
@@ -30,7 +31,7 @@ bool Escritura_archivo(archivo a);
 //Retorna true si se puede escribir el archivo y false en caso contrario
 
 
-archivo Crear_archivo(Cadena nombreArch, archivo a);
+archivo Crear_archivo(Cadena nombreArch);
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
 
 
