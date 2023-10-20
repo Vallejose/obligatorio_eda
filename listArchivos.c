@@ -36,7 +36,7 @@ list_archivos Tail_listArchivos(list_archivos ar){
 	return ar->siguiente;
 }
 
-list_archivos Cons_listArchivos(archivo a, list_archivos &ar){
+list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 //Inserta un archivo a al principio de ar
 	list_archivos aux = new(nodo_listArchivos);
 	aux->archs = a;
