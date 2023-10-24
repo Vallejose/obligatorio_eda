@@ -29,6 +29,12 @@ Cadena Nombre_directorio(directorio d){
 	return d->nombre;
 }
 
+directorio Insert_lista(list_archivos la, directorio dire){
+//Inserta una lista de archivos en un directorioi
+	dire->archs = la;
+	return dire;
+}
+
 list_archivos listArchs(directorio d){
 	//Retorna una lista de archivos 
 	//Pre: el directorio no es vacio

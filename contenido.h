@@ -20,7 +20,8 @@ Cadena Retorna_contenido(contenido c);
 
 
 bool IsNull_contenido(contenido c);
-
+//retorna contenido
+//Cadena Crear_contenido();
 /*
 archivo Crear_contenido();
 //Retorna un contenido para un archivo

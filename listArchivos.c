@@ -65,7 +65,7 @@ list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 list_archivos Crear_listArchivos(list_archivos a){ 
 //Revisaro bien, nose si le tentgo que pasar parametros a la funcion y por que por referencia
 //Inicializa la lista de archivos que contendra cada archivo
-	a = new(nodo_listArchivos);
+ 	a = new(nodo_listArchivos);
 	//a->archivo = Crear_archivo(nombre, exten);
 	a->siguiente = NULL;
 	return a;

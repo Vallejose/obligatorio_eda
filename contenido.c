@@ -13,7 +13,7 @@
 using namespace std;
 
 struct nodo_contenido{
-	Cadena cont;
+	Cadena content;
 };
 
 contenido Null_contenido(){
@@ -23,7 +23,7 @@ contenido Null_contenido(){
 
 Cadena Retorna_contenido(contenido c){
 //Retorna el contenido c.
-	return c->cont;
+	return c->content;
 }
 
 bool IsNull_contenido(contenido c){
@@ -33,10 +33,12 @@ bool IsNull_contenido(contenido c){
 
 //Crear contenido
 //Eliminar archivo
-
 /*
-archivo Crear_contenido(){
+Cadena Crear_contenido(){
 //Retorna un contenido para un archivo
 	contenido cont = new(nodo_contenido);
-	cont->contenido = new char[MAX_CONT];
-}*/
+	Cadena aux = new char[MAX_CONT];
+	strcpy(aux, "hola");
+	return aux;
+}
+*/
