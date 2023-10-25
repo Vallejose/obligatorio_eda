@@ -22,6 +22,9 @@ Cadena Nombre_directorio(directorio d);
 //Retorna el nombre del directorio d
 //Pre: d no es vacio
 
+directorio Insert_lista(list_archivos la, directorio dire);
+//Inserta una lista de archivos en un directorioi
+
 list_archivos listArchs(directorio d);
 //Retorna una lista de archivos 
 //Pre: el directorio no es vacio
@@ -36,7 +39,7 @@ directorio Crear_Directorio(Cadena nombre);
 // Retorna un directorio de nombre "nombre".
 
 
- bool IsEmpty_listArchivos(list_archivos ar);
+ /*bool IsEmpty_listArchivos(list_archivos ar);
 //Retorna true si ar es vacia y false en caso contrario;
-
+*/
 #endif

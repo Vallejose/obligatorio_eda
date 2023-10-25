@@ -54,6 +54,8 @@ bool existe_arch(list_archivos l, Cadena nombreAr);
 	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
 	//Pre: lista no es vacia
 
+archivo buscar_archivo(list_archivos l, Cadena nombreAr);
+
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo);
 // Elimina un archivo del directorio actual, siempre y cuando no sea de sólo lectura.
 // Para mas detalles ver letra.

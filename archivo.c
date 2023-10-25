@@ -9,7 +9,7 @@
 #include <iostream>
 #include "definiciones.h"
 #include "archivo.h"
-#include "contenido.h
+#include "contenido.h"
 
 using namespace std;
 
@@ -19,8 +19,6 @@ struct _archivo{
 	bool escritura;
 	contenido cont; //Terminar de implemetar
 };
-
-int a = 0;
 
 archivo Null_archivo(){
 //Retorna un archivo a vacio.
@@ -33,7 +31,7 @@ Cadena Nombre_archivo(archivo a){
 	return a->nombre;
 }
 
-Cadena Extencion_archivo(archivo a){
+Cadena Extension_archivo(archivo a){
 //Retorna la extencion del archivo a.
 //Pre: a no es vacio.
 	return a->exten;
@@ -52,11 +50,14 @@ archivo Crear_archivo(Cadena nombreArch){
 	aux->exten = new char[MAX_EXT];
 	strcpy(aux->exten, "txt");
 	aux->escritura = true;
-	//aux->cont = new char[MAX_CONT]
 	aux->cont = NULL;
 	return aux;
 }
 
+contenido Contenido_Arch(archivo a){
+//Retorna el contenido del arcchivo a
+	return a->cont;
+}	
 bool IsNull_archivo(archivo a){
 // retorna true si el archivo a esta vacio y false en caso contrario
 	return (a == NULL);

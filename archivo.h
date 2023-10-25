@@ -1,5 +1,5 @@
-#ifndef ARCHOIVO_H
-#define ARCCHIVO_H
+#ifndef ARCHIVO_H
+#define ARCHIVO_H
 
 #include "definiciones.h"
 #include "contenido.h"
@@ -21,8 +21,11 @@ Cadena Nombre_archivo(archivo a);
 //Retorna el nombre del archivo a.
 //Pre: a no es vacio.
 
+contenido Contenido_Arch(archivo a);
+//Retorna el contenido del arcchivo a
 
-Cadena Extencion_archivo(archivo a);
+
+Cadena Extension_archivo(archivo a);
 //Retorna la extencion del archivo a.
 //Pre: a no es vacio.
 
