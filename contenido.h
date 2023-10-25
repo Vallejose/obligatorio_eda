@@ -10,20 +10,21 @@
 // Modulo de Definición de contenido.
 
 
-typedef struct nodo_contenidio * contenido;
+typedef struct nodo_contenido * contenido;
 
 contenido Null_contenido();
-// Retorna uncontenido vacio
+// Retorna un contenido vacio
 
-contenido Return_contenido(contenido c);
+Cadena Retorna_contenido(contenido c);
 //Retorna el contenido del objeto contenido c.
-
+//Pre: el contenido c no puede ser vacio.
 
 bool IsNull_contenido(contenido c);
-
-
-archivo Crear_contenido(Cadena nombre, Cadena exten);
+//retorna contenido
+//Cadena Crear_contenido();
+/*
+archivo Crear_contenido();
 //Retorna un contenido para un archivo
-
+*/
 
 #endif

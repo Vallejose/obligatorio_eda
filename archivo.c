@@ -6,6 +6,7 @@
 //Modulo de implementacion de archivo.
 
 #include <string.h>
+#include <iostream>
 #include "definiciones.h"
 #include "archivo.h"
 #include "contenido.h"
@@ -19,7 +20,6 @@ struct _archivo{
 	contenido cont; //Terminar de implemetar
 };
 
-
 archivo Null_archivo(){
 //Retorna un archivo a vacio.
 	return NULL;
@@ -31,7 +31,7 @@ Cadena Nombre_archivo(archivo a){
 	return a->nombre;
 }
 
-Cadena Extencion_archivo(archivo a){
+Cadena Extension_archivo(archivo a){
 //Retorna la extencion del archivo a.
 //Pre: a no es vacio.
 	return a->exten;
@@ -42,7 +42,7 @@ bool Escritura_archivo(archivo a){
 	return a->escritura;
 }
 
-archivo Crear_archivo(Cadena nombreArch, archivo a){
+archivo Crear_archivo(Cadena nombreArch){
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
 	archivo aux = new(_archivo);
 	aux->nombre = new char[MAX_NOMBRE];
@@ -50,11 +50,14 @@ archivo Crear_archivo(Cadena nombreArch, archivo a){
 	aux->exten = new char[MAX_EXT];
 	strcpy(aux->exten, "txt");
 	aux->escritura = true;
-	//aux->cont = new char[MAX_CONT]
-	//aux->cont = Null_contenido();
+	aux->cont = NULL;
 	return aux;
 }
 
+contenido Contenido_Arch(archivo a){
+//Retorna el contenido del arcchivo a
+	return a->cont;
+}	
 bool IsNull_archivo(archivo a){
 // retorna true si el archivo a esta vacio y false en caso contrario
 	return (a == NULL);

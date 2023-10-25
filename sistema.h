@@ -11,7 +11,7 @@
 
 #include "sistema.h"
 #include "directorio.h"
-#include "archivos.h"
+#include "listArchivos.h"
 #include "archivo.h"
 #include "contenido.h"
 
@@ -50,6 +50,12 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo);
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
 
+bool existe_arch(list_archivos l, Cadena nombreAr);
+	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
+	//Pre: lista no es vacia
+
+archivo buscar_archivo(list_archivos l, Cadena nombreAr);
+
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo);
 // Elimina un archivo del directorio actual, siempre y cuando no sea de sólo lectura.
 // Para mas detalles ver letra.
@@ -85,6 +91,9 @@ TipoRet SEARCH (Sistema &s, Cadena nombreArchivo, Cadena texto);
 TipoRet REPLACE (Sistema &s, Cadena nombreArchivo, Cadena texto1, Cadena texto2);
 // Busca y reemplaza dentro del archivo la existencia del texto1 por el texto2. 
 // Para mas detalles ver letra.
+
+directorio Dir_act(Sistema s);
+//retorna el directorio actual del sistema s-
 
 #endif
 
