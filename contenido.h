@@ -2,6 +2,7 @@
 #define CONTENIDO_H
 
 #include "definiciones.h"
+#include "archivo.h"
 //Estructura de datos y algoritmos - curso 2023
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
@@ -22,9 +23,9 @@ Cadena Retorna_contenido(contenido c);
 bool IsNull_contenido(contenido c);
 //retorna contenido
 //Cadena Crear_contenido();
-/*
-archivo Crear_contenido();
+
+Cadena Crear_contenido();
 //Retorna un contenido para un archivo
-*/
+
 
 #endif

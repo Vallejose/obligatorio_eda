@@ -3,6 +3,7 @@
 
 #include "definiciones.h"
 #include "contenido.h"
+
 //Estructura de datos y algoritmos - curso 2023
 // Tecnologo en Informatica FIng - DGETP - UTEC
 //
@@ -20,6 +21,7 @@ archivo Null_archivo();
 Cadena Nombre_archivo(archivo a);
 //Retorna el nombre del archivo a.
 //Pre: a no es vacio.
+
 
 contenido Contenido_Arch(archivo a);
 //Retorna el contenido del arcchivo a

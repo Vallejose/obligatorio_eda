@@ -9,6 +9,7 @@
 #include <iostream>
 #include "definiciones.h"
 #include "contenido.h"
+#include "archivo.h"
 
 using namespace std;
 
