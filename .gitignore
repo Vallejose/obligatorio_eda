@@ -9,3 +9,6 @@
 *.o
 
 main
+
+.vscode
+ignorar.c
