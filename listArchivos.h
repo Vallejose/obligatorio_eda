@@ -31,8 +31,14 @@ list_archivos Tail_listArchivos(list_archivos ar);
 list_archivos Cons_listArchivos(archivo a, list_archivos ar);
 //Inserta un archivo a al principio de ar
 
+list_archivos Snoc(archivo a, list_archivos ar);
+//Inserta un archivo al final de la lista de archivos.
 
 bool IsEmpty_listArchivos(list_archivos ar);
+
+list_archivos Insert_listArchivos(archivo a, list_archivos ar);
+//Inserta un archivo de manera ordenada, en una lista ordenada
+
 //Retorna true si ar es vacia y false en caso contrario;
 
  
@@ -49,5 +55,8 @@ list_archivos Crear_listArchivos(list_archivos a);
 list_archivos Crear_listArchivos(list_archivos a);
 //Revisaro bien, nose si le tentgo que pasar parametros a la funcion y por que por referencia
 //Inicializa la lista de archivos que contendra cada archivo
+
+list_archivos Insert_listArchivos(archivo a, list_archivos ar);
+//Inserta un archivo de manera ordenada
 
 #endif

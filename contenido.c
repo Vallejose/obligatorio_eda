@@ -9,6 +9,7 @@
 #include <iostream>
 #include "definiciones.h"
 #include "contenido.h"
+#include "archivo.h"
 
 using namespace std;
 
@@ -27,18 +28,18 @@ Cadena Retorna_contenido(contenido c){
 }
 
 bool IsNull_contenido(contenido c){
-//Retorna true si el contenido es cacion y false en caso contrario
+//Retorna true si el contenido es vacio y false en caso contrario
 	return (c == NULL);
 }
 
 //Crear contenido
 //Eliminar archivo
-/*
-Cadena Crear_contenido(){
+
+contenido Crear_contenido(){
 //Retorna un contenido para un archivo
-	contenido cont = new(nodo_contenido);
-	Cadena aux = new char[MAX_CONT];
-	strcpy(aux, "hola");
-	return aux;
+	contenido contAux = new(nodo_contenido);
+	//Cadena aux = new char[MAX_CONT];
+	contAux->content = new char[MAX_CONT];
+	strcpy(contAux, "hola");
+	return contAux;
 }
-*/

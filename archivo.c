@@ -20,15 +20,6 @@ struct _archivo{
 	contenido cont; //Terminar de implemetar
 };
 
-
-/*
-void Crear_contenido(){
-//Retorna un contenido para un archivo
-	contenido cont = new(nodo_contenido);
-	cont->content = new char[MAX_CONT];
-	strcpy(cont->content, "hola");
-}
-*/
 archivo Null_archivo(){
 //Retorna un archivo a vacio.
 	return NULL;
