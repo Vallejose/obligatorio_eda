@@ -7,9 +7,11 @@
 
 #include <string.h>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include "definiciones.h"
 #include "contenido.h"
-#include "archivo.h"
+
 
 using namespace std;
 
@@ -22,7 +24,7 @@ contenido Null_contenido(){
 	return NULL;
 }
 
-Cadena Retorna_contenido(contenido c){
+Cadena Retorna_cad_cont(contenido c){
 //Retorna el contenido c.
 	return c->content;
 }
@@ -35,19 +37,45 @@ bool IsNull_contenido(contenido c){
 //Crear contenido
 //Eliminar archivo
 
-contenido Insertar_contenido(contenido c, cadena text){
+contenido Insertar_contenido(contenido c, Cadena text){
 //
-	Cadena cadAux = Retorna_contenido(c);
-	if(cadAux == NULL){
-		strcpy(cadAux, text);
-	} else {
-		
-	}
+	cout<<"Entre a insertar_contenido"<<endl;
+	Cadena cadAux;
 	
-	/*contenido contAux = new(nodo_contenido);
-	//Cadena aux = new char[MAX_CONT];
-	contAux->content = new char[MAX_CONT];
-	*/
-	strcpy(contAux, conten);
-	return contAux;
+	if(c == NULL){
+		cout<<"entre al if cadAux == NULL"<<endl;
+		cadAux = new char[MAX_CONT];
+		strcpy(cadAux, text);
+		cout << "el texto ingresado fue: " << cadAux << endl;
+		
+		int l = strlen(cadAux);
+		cout << "cant letras: "<< l << endl;
+	} else {
+		cadAux = Retorna_cad_cont(c);
+		cout<<"cadAux = cadena de c"<<endl;
+	}
+	contenido cAux = new(nodo_contenido);
+	//cAux = c;
+	cout << " Cree variable contenido cAuz" << endl;
+	cAux->content = cadAux;
+	cout << " agregue la cadena al contenido" << endl;
+	return cAux;
 }
+
+/*int cuenta_letras(Cadena cad){
+//Cuenta la cantidad de letras del contenido
+	int pos = 0;
+	Cadena leer;
+	
+	strcpy(leer, cad);
+	
+	do{
+		leer = getchar();
+		pos++;
+		
+	}while(leer!='\0');
+	
+	cout << "pos = "<< pos <<endl;
+	
+	return pos;
+}*/

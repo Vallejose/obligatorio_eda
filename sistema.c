@@ -183,18 +183,30 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 	list_archivos auxLis = listArchs(Dir_act(s));
 	
 	if(existe_arch(auxLis, nombreArchivo)){
+		cout <<"Existe el archivo"<<endl;
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
+		cout<<"Lo encontre y lo guarde en ar_aux"<<endl;
 		if(Escritura_archivo(ar_aux)){
+			cout<<"es de escritura"<<endl;
 			contenido auxCont = Contenido_Arch(ar_aux);
-			/*if(auxCont == NULL){
-
-			}*/
-			cout <<"cadena prueba: "<< aux << endl;
+			cout <<"traje el contenido del archivo?"<<endl;
+			
+			auxCont = Insertar_contenido(auxCont, texto);
+			ar_aux = Insertar_cont_arch(ar_aux,auxCont);
+			auxLis = Insert_listArchivos(ar_aux,auxLis);
+			directorio di_aux = Insert_lista(auxLis,di_aux);
+			s->actual = di_aux;
+			s->raiz = di_aux;
+			
+			cout<<"inserte el contenido"<<endl;
+			//cout <<"cadena prueba: "<<  << endl;
 			return OK;
 		} else {
+			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
 			return ERROR;
 		}	
 	} else {
+		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
 		return ERROR;
 	}
 }
@@ -224,7 +236,7 @@ TipoRet TYPE (Sistema &s, Cadena nombreArchivo){
 		if(auxCont == NULL){
 			cout << "No tiene contenido" <<endl;
 		}else{
-			Cadena auxCad = Retorna_contenido(auxCont);
+			Cadena auxCad = Retorna_cad_cont(auxCont);
 			cout << auxCad <<endl;
 		}
 		return OK;

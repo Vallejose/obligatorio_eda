@@ -50,9 +50,10 @@ archivo Crear_archivo(Cadena nombreArch){
 	aux->exten = new char[MAX_EXT];
 	strcpy(aux->exten, "txt");
 	aux->escritura = true;
-	aux->cont = new char[MAX_CONT];
+	aux->cont = NULL;
 	return aux;
 }
+
 
 contenido Contenido_Arch(archivo a){
 //Retorna el contenido del arcchivo a
@@ -69,6 +70,13 @@ archivo Eliminar_archivo(archivo a){
 	return a;
 }
 
+archivo Insertar_cont_arch(archivo a, contenido c){
+//Inserta un nodo contenido en un archivo
+//Pre:el archivo y el contenido no pueden ser nulos
+	archivo aux = a;
+	aux -> cont = c;
+	return aux;
+}
 
 
 
