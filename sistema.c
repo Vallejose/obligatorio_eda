@@ -185,7 +185,10 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 	if(existe_arch(auxLis, nombreArchivo)){
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
 		if(Escritura_archivo(ar_aux)){
-			Cadena aux = Crear_contenido();
+			contenido auxCont = Contenido_Arch(ar_aux);
+			/*if(auxCont == NULL){
+
+			}*/
 			cout <<"cadena prueba: "<< aux << endl;
 			return OK;
 		} else {

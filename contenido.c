@@ -35,11 +35,19 @@ bool IsNull_contenido(contenido c){
 //Crear contenido
 //Eliminar archivo
 
-contenido Crear_contenido(){
-//Retorna un contenido para un archivo
-	contenido contAux = new(nodo_contenido);
+contenido Insertar_contenido(contenido c, cadena text){
+//
+	Cadena cadAux = Retorna_contenido(c);
+	if(cadAux == NULL){
+		strcpy(cadAux, text);
+	} else {
+		
+	}
+	
+	/*contenido contAux = new(nodo_contenido);
 	//Cadena aux = new char[MAX_CONT];
 	contAux->content = new char[MAX_CONT];
-	strcpy(contAux, "hola");
+	*/
+	strcpy(contAux, conten);
 	return contAux;
 }
