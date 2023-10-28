@@ -199,8 +199,7 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 
 			if(auxCont == NULL){
 				cadCon = new char[MAX_CONT];
-				int largo = strlen(texto);
-				Cadena aux = add_chars(texto,largo);
+				Cadena aux = add_chars(texto,0);
 				strcpy(cadCon,aux);
 			}else{
 				cadCon = Retorna_cad_cont(auxCont);

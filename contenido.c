@@ -40,26 +40,36 @@ contenido Insertar_contenido(contenido c, Cadena text){
 	cout<<"Entre a insertar_contenido"<<endl;
 	
 	cout << " Cree variable contenido cAuz" << endl;
-	c->content = text;
+	contenido aux = new(nodo_contenido);
+	aux->content = text;
 	cout << " agregue la cadena al contenido" << endl;
-	return c;
+	return aux;
 }
-
+	
 Cadena add_chars(Cadena txtIngresar, int espacioUsado){
 	cout << "entre a add_chars"<<endl;
 	int espacioAUsar = strlen(txtIngresar);
 	int espacioDisponible= MAX_CONT - espacioUsado;
+	cout << "espacio disponiblee: " << espacioDisponible<<endl;
 	
-	if(espacioDisponible >= espacioAUsar){
-		cout<<"espacioDisponible >= espacioAUsar"<<endl;
+	if(espacioAUsar <= espacioDisponible){
+		cout << txtIngresar << endl;
 		return txtIngresar;
-	} else {
-		Cadena auxChar = new char[espacioDisponible];
-		strcpy(auxChar, txtIngresar);
-		cout<<auxChar<<endl;
-		
-		return auxChar;
+	}else{
+		Cadena ax = new char[MAX_CONT];
+
+	for (int m=0; m<=espacioDisponible; m++) {
+		ax[m] = txtIngresar[m];
+		}
+		cout << ax << endl;
+	return ax;
 	}
+	
+	
+	//cout << ax << endl;
+	//cout << xxxua << endl;
+
+
+		
+	
 }
-
-
