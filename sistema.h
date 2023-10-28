@@ -9,7 +9,6 @@
 // Modulo de Definición del File System.
 
 
-#include "sistema.h"
 #include "directorio.h"
 #include "listArchivos.h"
 #include "archivo.h"

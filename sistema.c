@@ -5,13 +5,14 @@
 // sistema.c
 // Modulo de Implementacion del File System.
 
-#include "contenido.h"
+
 #include <string.h>
 #include <iostream>
 #include "sistema.h"
 #include "directorio.h"
 #include "listArchivos.h"
 #include "archivo.h"
+#include "contenido.h"
 
 
 using namespace std;
@@ -152,9 +153,9 @@ bool existe_arch(list_archivos l, Cadena nombreAr){
 		return true;
 	}else if (Tail_listArchivos(l) == NULL){
 		return false;	
-	} else
+	} else {
 		return existe_arch(Tail_listArchivos(l), nombreAr);
-	
+	}
 }
 
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo){
@@ -179,7 +180,37 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 // Agrega un texto al final del archivo NombreArchivo.
 // Para mas detalles ver letra.
 	
-	return NO_IMPLEMENTADA;
+	directorio di_aux = Dir_act(s);
+	list_archivos auxLis = listArchs(di_aux);
+	
+	
+	if(existe_arch(auxLis, nombreArchivo)){
+		cout <<"Existe el archivo"<<endl;
+		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
+		cout<<"Lo encontre y lo guarde en ar_aux"<<endl;
+		if(Escritura_archivo(ar_aux)){
+			cout<<"es de escritura"<<endl;
+			contenido auxCont = Contenido_Arch(ar_aux);
+			cout <<"traje el contenido del archivo?"<<endl;
+			
+			auxCont = Insertar_contenido(auxCont, texto);
+			ar_aux = Insertar_cont_arch(ar_aux,auxCont);
+			auxLis = Insert_listArchivos(ar_aux,auxLis);
+			Insert_lista(auxLis,di_aux);
+			s->actual = di_aux;
+			s->raiz = di_aux;
+			
+			cout<<"inserte el contenido"<<endl;
+			//cout <<"cadena prueba: "<<  << endl;
+			return OK;
+		} else {
+			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
+			return ERROR;
+		}	
+	} else {
+		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
+		return ERROR;
+	}
 }
 
 TipoRet DC (Sistema &s, Cadena nombreArchivo, int k){
@@ -201,13 +232,14 @@ TipoRet TYPE (Sistema &s, Cadena nombreArchivo){
 	list_archivos list_aux = listArchs(Dir_act(s));
 	
 	if(existe_arch(list_aux, nombreArchivo)){
-		archivo aux = buscar_archivo(list_aux, nombreArchivo);
-		contenido auxC = Contenido_Arch(aux);
-		if(auxC == NULL){
+		archivo auxArch = buscar_archivo(list_aux, nombreArchivo);
+		contenido auxCont = Contenido_Arch(auxArch);
+		///Cadena auxCadena = Retorna_contenido(auxCont);
+		if(auxCont == NULL){
 			cout << "No tiene contenido" <<endl;
 		}else{
-			Cadena auxCadena = Retorna_contenido(auxC);
-			cout << auxCadena <<endl;
+			Cadena auxCad = Retorna_cad_cont(auxCont);
+			cout << auxCad <<endl;
 		}
 		return OK;
 	} else {
