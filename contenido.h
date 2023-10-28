@@ -30,4 +30,6 @@ contenido Insertar_contenido(contenido c, Cadena text);
 
 Cadena add_chars(Cadena txtIngresar, int espacioUsado);
 
+Cadena del_chars(Cadena txtIngresar, int espacioLiberar);
+
 #endif

@@ -58,18 +58,42 @@ Cadena add_chars(Cadena txtIngresar, int espacioUsado){
 	}else{
 		Cadena ax = new char[MAX_CONT];
 
-	for (int m=0; m<=espacioDisponible; m++) {
+	for (int m=0; m<espacioDisponible; m++) {
 		ax[m] = txtIngresar[m];
 		}
 		cout << ax << endl;
 	return ax;
 	}
+}
 	
 	
+Cadena del_chars(Cadena txtborrar, int espacioLiberar){
+	cout << "entre a add_chars"<<endl;
+	int espacioUsado = strlen(txtborrar);
+	int espacioDisponible= espacioUsado - espacioLiberar;
+	cout << "espacio disponiblee: " << espacioDisponible<<endl;
+	cout << "espacio usado: " << espacioUsado<<endl;
+	cout << "espacio liberar: " << espacioLiberar <<endl;
+	
+	if(espacioLiberar >= espacioUsado){
+		Cadena ax = new char[MAX_CONT];
+		return ax;
+	}else{
+		Cadena ax = new char[MAX_CONT];
+
+	for (int m=0; m<espacioDisponible; m++) {
+		ax[m] = txtborrar[m];
+		}
+		cout << ax << endl;
+	return ax;
+	}
+
+
 	//cout << ax << endl;
 	//cout << xxxua << endl;
 
 
 		
-	
+	//Holacomoestas 13
+
 }

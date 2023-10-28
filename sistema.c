@@ -241,6 +241,50 @@ TipoRet DC (Sistema &s, Cadena nombreArchivo, int k){
 TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 // Elimina los a lo sumo K últimos caracteres del archivo parámetro.
 // Para mas detalles ver letra.
+
+	directorio di_aux = Dir_act(s);
+	list_archivos auxLis = listArchs(di_aux);
+
+	if(existe_arch(auxLis, nombreArchivo)){
+		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
+
+		if(Escritura_archivo(ar_aux)){
+			contenido auxCont = Contenido_Arch(ar_aux);
+			Cadena cadCon;
+
+
+			if(auxCont == NULL){
+				cout << "archivo vacio" << endl;
+			}else{
+				cadCon = Retorna_cad_cont(auxCont);
+				int largo = strlen(cadCon);
+				//int eliminarChar = largo - k;
+
+				Cadena aux = del_chars(cadCon,k);
+				strcpy(cadCon, aux);
+
+				auxCont = Insertar_contenido(auxCont, cadCon);
+				ar_aux = Insertar_cont_arch(ar_aux,auxCont);
+				auxLis = Insert_listArchivos(ar_aux,auxLis);
+				Insert_lista(auxLis,di_aux);
+				s->actual = di_aux;
+				s->raiz = di_aux;
+			}
+
+		
+			
+
+			return OK;
+		} else {
+			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
+			return ERROR;
+		}	
+	} else {
+		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
+		return ERROR;
+	}
+
+
 	return NO_IMPLEMENTADA;
 }
 
