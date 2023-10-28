@@ -54,11 +54,11 @@ archivo Crear_archivo(Cadena nombreArch){
 	return aux;
 }
 
-
 contenido Contenido_Arch(archivo a){
 //Retorna el contenido del arcchivo a
 	return a->cont;
 }	
+
 bool IsNull_archivo(archivo a){
 // retorna true si el archivo a esta vacio y false en caso contrario
 	return (a == NULL);
@@ -77,7 +77,3 @@ archivo Insertar_cont_arch(archivo a, contenido c){
 	aux -> cont = c;
 	return aux;
 }
-
-
-
-//contenido Contenido_archivo(archivo a)??

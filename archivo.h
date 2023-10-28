@@ -23,9 +23,6 @@ Cadena Nombre_archivo(archivo a);
 //Pre: a no es vacio.
 
 
-contenido Contenido_Arch(archivo a);
-//Retorna el contenido del arcchivo a
-
 
 Cadena Extension_archivo(archivo a);
 //Retorna la extencion del archivo a.
@@ -38,6 +35,10 @@ bool Escritura_archivo(archivo a);
 
 archivo Crear_archivo(Cadena nombreArch);
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
+
+
+contenido Contenido_Arch(archivo a);
+//Retorna el contenido del arcchivo a
 
 
 bool IsNull_archivo(archivo a);

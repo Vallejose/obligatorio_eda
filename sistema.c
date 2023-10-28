@@ -14,7 +14,6 @@
 #include "archivo.h"
 #include "contenido.h"
 
-
 using namespace std;
 
 struct _sistema{
@@ -24,8 +23,6 @@ struct _sistema{
 	// aquí deben figurar los campos que usted considere necesarios para manipular el sistema de directorios
 	// Se deberan crear nuevos modulos
 };
-
-
 
 TipoRet CREARSISTEMA(Sistema &s){
 // Inicializa el sistema para que contenga únicamente al directorio RAIZ, sin subdirectorios ni archivos.
@@ -73,21 +70,17 @@ TipoRet DIR (Sistema &s, Cadena parametro){
 // Para mas detalles ver letra.
 	
 	list_archivos l_aux = listArchs(Dir_act(s));
-	Cadena nomDir = Nombre_directorio(Dir_act(s));	
-	
+	Cadena nomDir = Nombre_directorio(Dir_act(s));
 	cout << nomDir << endl;
 	if (IsEmpty_listArchivos(l_aux)){
 		cout << "Directorio vacio\n";
 	} else {
-		///<PREGUNTAR QUE PASA SI PONGO != /S>
 		if(parametro != NULL){
-			
 			while(l_aux != NULL){				
 				Cadena nomAr = Nombre_archivo(Head_listArchivos(l_aux));
 				Cadena extAr = Extension_archivo(Head_listArchivos(l_aux));
 				cout << nomDir << "/";
 				cout << nomAr << "." << extAr << endl;
-				
 				l_aux = Tail_listArchivos(l_aux);
 			}
 		} else {
@@ -95,37 +88,30 @@ TipoRet DIR (Sistema &s, Cadena parametro){
 				Cadena nomAr = Nombre_archivo(Head_listArchivos(l_aux));
 				Cadena extAr = Extension_archivo(Head_listArchivos(l_aux));
 				bool escr = Escritura_archivo(Head_listArchivos(l_aux));
-				
 				cout << nomAr << "." << extAr << "   ";
-				if (escr){
+				if (escr)
 					cout << "Lecura/Escritura" << endl;
-				} else {
+				else 
 					cout << "Lectura" << endl;
-				}
-				
 				l_aux = Tail_listArchivos(l_aux);
 			}
 		}
 	}
-
 	return OK;
 }
 
 TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
-	
 	directorio auxDir = Dir_act(s);
 	list_archivos auxLa = listArchs(auxDir);
 	
 	if(IsEmpty_listArchivos(auxLa)){
-		
 		archivo auxA = Crear_archivo(nombreArchivo);	
 		auxLa = Insert_listArchivos(auxA,auxLa);
 		Insert_lista(auxLa, auxDir);
 		s->actual = auxDir;
 		s->raiz = auxDir;
-			
 		return OK;
 	} else {
 		if(existe_arch(auxLa, nombreArchivo)){
@@ -136,8 +122,7 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 			auxLa = Insert_listArchivos(auxA,auxLa);
 			Insert_lista(auxLa, auxDir);
 			s->actual = auxDir;
-			s->raiz = auxDir;
-				
+			s->raiz = auxDir;	
 			return OK;
 		}
 	} 
@@ -148,14 +133,13 @@ bool existe_arch(list_archivos l, Cadena nombreAr){
 	//Pre: lista no es vacia
 	
 	Cadena nombreEvaluar = Nombre_archivo(Head_listArchivos(l));
-		
-	if(strcmp(nombreEvaluar,nombreAr) == 0){
+	if(strcmp(nombreEvaluar,nombreAr) == 0)
 		return true;
-	}else if (Tail_listArchivos(l) == NULL){
+	else if (Tail_listArchivos(l) == NULL)
 		return false;	
-	} else {
+	else 
 		return existe_arch(Tail_listArchivos(l), nombreAr);
-	}
+	
 }
 
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo){
@@ -179,24 +163,14 @@ TipoRet IC (Sistema &s, Cadena nombreArchivo, Cadena texto){
 TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 // Agrega un texto al final del archivo NombreArchivo.
 // Para mas detalles ver letra.
-	
 	directorio di_aux = Dir_act(s);
 	list_archivos auxLis = listArchs(di_aux);
 	
-	
 	if(existe_arch(auxLis, nombreArchivo)){
-		cout <<"Existe el archivo"<<endl;
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
-		cout<<"Lo encontre y lo guarde en ar_aux"<<endl;
-
-
 		if(Escritura_archivo(ar_aux)){
-			cout<<"es de escritura"<<endl;
 			contenido auxCont = Contenido_Arch(ar_aux);
-			cout <<"traje el contenido del archivo?"<<endl;
 			Cadena cadCon;
-
-
 			if(auxCont == NULL){
 				cadCon = new char[MAX_CONT];
 				Cadena aux = add_chars(texto,0);
@@ -207,20 +181,12 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 				Cadena aux = add_chars(texto,largo);
 				strcat(cadCon, aux);
 			}
-
-
-
-
-			
 			auxCont = Insertar_contenido(auxCont, cadCon);
 			ar_aux = Insertar_cont_arch(ar_aux,auxCont);
 			auxLis = Insert_listArchivos(ar_aux,auxLis);
 			Insert_lista(auxLis,di_aux);
 			s->actual = di_aux;
 			s->raiz = di_aux;
-			
-			cout<<"inserte el contenido"<<endl;
-			//cout <<"cadena prueba: "<<  << endl;
 			return OK;
 		} else {
 			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
@@ -241,28 +207,21 @@ TipoRet DC (Sistema &s, Cadena nombreArchivo, int k){
 TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 // Elimina los a lo sumo K últimos caracteres del archivo parámetro.
 // Para mas detalles ver letra.
-
 	directorio di_aux = Dir_act(s);
 	list_archivos auxLis = listArchs(di_aux);
 
 	if(existe_arch(auxLis, nombreArchivo)){
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
-
 		if(Escritura_archivo(ar_aux)){
 			contenido auxCont = Contenido_Arch(ar_aux);
 			Cadena cadCon;
-
-
 			if(auxCont == NULL){
 				cout << "archivo vacio" << endl;
 			}else{
 				cadCon = Retorna_cad_cont(auxCont);
 				int largo = strlen(cadCon);
-				//int eliminarChar = largo - k;
-
 				Cadena aux = del_chars(cadCon,k);
 				strcpy(cadCon, aux);
-
 				auxCont = Insertar_contenido(auxCont, cadCon);
 				ar_aux = Insertar_cont_arch(ar_aux,auxCont);
 				auxLis = Insert_listArchivos(ar_aux,auxLis);
@@ -270,10 +229,6 @@ TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 				s->actual = di_aux;
 				s->raiz = di_aux;
 			}
-
-		
-			
-
 			return OK;
 		} else {
 			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
@@ -283,8 +238,6 @@ TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
 		return ERROR;
 	}
-
-
 	return NO_IMPLEMENTADA;
 }
 
@@ -293,19 +246,18 @@ TipoRet TYPE (Sistema &s, Cadena nombreArchivo){
 // Para mas detalles ver letra.
 	
 	list_archivos list_aux = listArchs(Dir_act(s));
-	
 	if(existe_arch(list_aux, nombreArchivo)){
 		archivo auxArch = buscar_archivo(list_aux, nombreArchivo);
 		contenido auxCont = Contenido_Arch(auxArch);
-		///Cadena auxCadena = Retorna_contenido(auxCont);
 		if(auxCont == NULL){
 			cout << "No tiene contenido" <<endl;
+			return ERROR;
 		}else{
 			Cadena auxCad = Retorna_cad_cont(auxCont);
 			cout << auxCad <<endl;
 		}
 		return OK;
-	} else {
+	} else{
 		cout << "No exite un archivo con ese nombre en el directorio actual\n";
 		return ERROR;
 	}
@@ -314,18 +266,16 @@ TipoRet TYPE (Sistema &s, Cadena nombreArchivo){
 archivo buscar_archivo(list_archivos l, Cadena nombreAr){
 	//Devuelve un archivo de nombreAr, de una lista de archivos, NULL si no lo encuentra
 	//Pre: lista no es vacia
-	
 	Cadena nombreEvaluar = Nombre_archivo(Head_listArchivos(l));
 	archivo aux;
 	
 	if(strcmp(nombreEvaluar,nombreAr) == 0){
 		aux = Head_listArchivos(l);
 		return aux;
-	}else if (Tail_listArchivos(l) == NULL){
+	}else if (Tail_listArchivos(l) == NULL)
 		return NULL;	
-	} else
+	 else
 		return buscar_archivo(Tail_listArchivos(l), nombreAr);
-	
 }
 
 TipoRet SEARCH (Sistema &s, Cadena nombreArchivo, Cadena texto){

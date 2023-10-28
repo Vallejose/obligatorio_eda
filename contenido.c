@@ -34,66 +34,44 @@ bool IsNull_contenido(contenido c){
 	return (c == NULL);
 }
 
-
 contenido Insertar_contenido(contenido c, Cadena text){
-
-	cout<<"Entre a insertar_contenido"<<endl;
-	
-	cout << " Cree variable contenido cAuz" << endl;
+//Dada una cadena de texto y un contenido c, inserta le texto en el contenido c
 	contenido aux = new(nodo_contenido);
 	aux->content = text;
-	cout << " agregue la cadena al contenido" << endl;
 	return aux;
 }
 	
 Cadena add_chars(Cadena txtIngresar, int espacioUsado){
-	cout << "entre a add_chars"<<endl;
+//Concatena la cadena existente de texto del contenido, 
+//con el texto ingrado por el usuario hasta llegar al maximo permitido
 	int espacioAUsar = strlen(txtIngresar);
 	int espacioDisponible= MAX_CONT - espacioUsado;
-	cout << "espacio disponiblee: " << espacioDisponible<<endl;
-	
-	if(espacioAUsar <= espacioDisponible){
-		cout << txtIngresar << endl;
-		return txtIngresar;
-	}else{
-		Cadena ax = new char[MAX_CONT];
 
-	for (int m=0; m<espacioDisponible; m++) {
-		ax[m] = txtIngresar[m];
-		}
-		cout << ax << endl;
+	if(espacioAUsar <= espacioDisponible)
+		return txtIngresar;
+	else{
+		Cadena ax = new char[MAX_CONT];
+		for (int m=0; m<espacioDisponible; m++) {
+			ax[m] = txtIngresar[m];
+			}
 	return ax;
 	}
 }
 	
-	
 Cadena del_chars(Cadena txtborrar, int espacioLiberar){
-	cout << "entre a add_chars"<<endl;
+//Elimina una n de caracteres de una cadena de texto dada por el usuario
+//Pre: La cadena no puede ser vacio
 	int espacioUsado = strlen(txtborrar);
 	int espacioDisponible= espacioUsado - espacioLiberar;
-	cout << "espacio disponiblee: " << espacioDisponible<<endl;
-	cout << "espacio usado: " << espacioUsado<<endl;
-	cout << "espacio liberar: " << espacioLiberar <<endl;
 	
 	if(espacioLiberar >= espacioUsado){
 		Cadena ax = new char[MAX_CONT];
 		return ax;
 	}else{
 		Cadena ax = new char[MAX_CONT];
-
-	for (int m=0; m<espacioDisponible; m++) {
-		ax[m] = txtborrar[m];
+		for (int m=0; m<espacioDisponible; m++) {
+			ax[m] = txtborrar[m];
 		}
-		cout << ax << endl;
 	return ax;
 	}
-
-
-	//cout << ax << endl;
-	//cout << xxxua << endl;
-
-
-		
-	//Holacomoestas 13
-
 }

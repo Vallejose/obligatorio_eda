@@ -44,8 +44,7 @@ list_archivos Cons_listArchivos(archivo a, list_archivos ar){
 	return aux;
 }
 
-
-list_archivos Snoc(archivo a, list_archivos ar){
+list_archivos Snoc_listArchivos(archivo a, list_archivos ar){
 //Inserta un archivo al final de la lista de archivos.
 	list_archivos auxAr = new(nodo_listArchivos);
 	auxAr->archs = a;
@@ -63,7 +62,7 @@ list_archivos Snoc(archivo a, list_archivos ar){
 	}
 }
 
-
+// Revisoar
 list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Inserta un archivo de manera ordenada, en una lista ordenada
 
@@ -73,52 +72,40 @@ list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 	Cadena nombreArch, nombreInsert;
 	nombreInsert = Nombre_archivo(a);
 	bool agregado = false;
-	
-	if(listaAux == NULL){
-		cout << "listaAux == NULL" << endl;
+	if(listaAux == NULL)
 		listaRet = Cons_listArchivos(a, listaRet);
-		
-	} else if(Tail_listArchivos(listaAux) == NULL){
-		cout << "lista con 1 elemento"<< endl;
+	else if(Tail_listArchivos(listaAux) == NULL){
 		archAux = Head_listArchivos(listaAux);
 		nombreArch = Nombre_archivo(archAux);
 		int resultComp = strcmp(nombreArch,nombreInsert);
-		cout << "El resultado de la comparacion es: " << resultComp<<endl;
 		if(resultComp >0){
-			cout <<"agrego archivo principio y aux al final"<<endl;
 			listaRet = Cons_listArchivos(a, listaRet);
-			listaRet = Snoc(archAux,listaRet);
-		} else if(resultComp == 0){
-			listaRet = Snoc(a,listaRet);
-		}else {
-			cout <<"agrego archivo al final"<<endl;
-			listaRet = Snoc(archAux, listaRet);
-			listaRet = Snoc(a, listaRet);
+			listaRet = Snoc_listArchivos(archAux,listaRet);
+		} else if(resultComp == 0)
+			listaRet = Snoc_listArchivos(a,listaRet);
+		else {
+			listaRet = Snoc_listArchivos(archAux, listaRet);
+			listaRet = Snoc_listArchivos(a, listaRet);
 		}
-		
 	} else {
-		cout<<"lista con más de 1 elemento"<<endl;
 		while(listaAux!=NULL){
 			archAux = Head_listArchivos(listaAux);
 			nombreArch = Nombre_archivo(archAux);
 			int resultComp = strcmp(nombreArch,nombreInsert);
-			
 			if(resultComp > 0){
-				cout << "lista desordenada, hago un snoc"<<endl;
 				if(!agregado){
-					listaRet = Snoc(a, listaRet);
+					listaRet = Snoc_listArchivos(a, listaRet);
 					agregado = true;
 				} 
-				listaRet = Snoc(archAux, listaRet);
+				listaRet = Snoc_listArchivos(archAux, listaRet);
 			}else if(resultComp == 0){
-				listaRet = Snoc(a,listaRet);
+				listaRet = Snoc_listArchivos(a,listaRet);
 			}
 			 else {
-				listaRet = Snoc(archAux, listaRet);
+				listaRet = Snoc_listArchivos(archAux, listaRet);
 				if(Tail_listArchivos(listaAux) == NULL)
-					listaRet = Snoc(a,listaRet);
+					listaRet = Snoc_listArchivos(a,listaRet);
 			}
-			
 			listaAux = listaAux->siguiente;
 		}
 	}
@@ -129,24 +116,3 @@ list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Retorna true si ar es vacia y false en caso contrario;
 	return(ar==NULL);
  }
- 
- /*list_archivos Destruir_listArchivos(list_archivos ar){
-//Destruye ar y libera la memoria asociada.
-//De manera recursiva.
-		if(ar == NULL)
-			return ar;
-		else{
-			ar->siguiente = Destruir(ar->siguiente);
-			delete ar;
-		}
-		return ar;
- }*/
-
-list_archivos Crear_listArchivos(list_archivos a){ 
-//Revisaro bien, nose si le tentgo que pasar parametros a la funcion y por que por referencia
-//Inicializa la lista de archivos que contendra cada archivo
- 	a = new(nodo_listArchivos);
-	//a->archivo = Crear_archivo(nombre, exten);
-	a->siguiente = NULL;
-	return a;
-}
