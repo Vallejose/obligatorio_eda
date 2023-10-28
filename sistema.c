@@ -188,12 +188,32 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 		cout <<"Existe el archivo"<<endl;
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
 		cout<<"Lo encontre y lo guarde en ar_aux"<<endl;
+
+
 		if(Escritura_archivo(ar_aux)){
 			cout<<"es de escritura"<<endl;
 			contenido auxCont = Contenido_Arch(ar_aux);
 			cout <<"traje el contenido del archivo?"<<endl;
+			Cadena cadCon;
+
+
+			if(auxCont == NULL){
+				cadCon = new char[MAX_CONT];
+				int largo = strlen(texto);
+				Cadena aux = add_chars(texto,largo);
+				strcpy(cadCon,aux);
+			}else{
+				cadCon = Retorna_cad_cont(auxCont);
+				int largo = strlen(cadCon);
+				Cadena aux = add_chars(texto,largo);
+				strcat(cadCon, aux);
+			}
+
+
+
+
 			
-			auxCont = Insertar_contenido(auxCont, texto);
+			auxCont = Insertar_contenido(auxCont, cadCon);
 			ar_aux = Insertar_cont_arch(ar_aux,auxCont);
 			auxLis = Insert_listArchivos(ar_aux,auxLis);
 			Insert_lista(auxLis,di_aux);

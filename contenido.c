@@ -34,48 +34,32 @@ bool IsNull_contenido(contenido c){
 	return (c == NULL);
 }
 
-//Crear contenido
-//Eliminar archivo
 
 contenido Insertar_contenido(contenido c, Cadena text){
-//
+
 	cout<<"Entre a insertar_contenido"<<endl;
-	Cadena cadAux;
 	
-	if(c == NULL){
-		cout<<"entre al if cadAux == NULL"<<endl;
-		cadAux = new char[MAX_CONT];
-		strcpy(cadAux, text);
-		cout << "el texto ingresado fue: " << cadAux << endl;
-		
-		int l = strlen(cadAux);
-		cout << "cant letras: "<< l << endl;
-	} else {
-		cadAux = Retorna_cad_cont(c);
-		cout<<"cadAux = cadena de c"<<endl;
-	}
-	contenido cAux = new(nodo_contenido);
-	//cAux = c;
 	cout << " Cree variable contenido cAuz" << endl;
-	cAux->content = cadAux;
+	c->content = text;
 	cout << " agregue la cadena al contenido" << endl;
-	return cAux;
+	return c;
 }
 
-/*int cuenta_letras(Cadena cad){
-//Cuenta la cantidad de letras del contenido
-	int pos = 0;
-	Cadena leer;
+Cadena add_chars(Cadena txtIngresar, int espacioUsado){
+	cout << "entre a add_chars"<<endl;
+	int espacioAUsar = strlen(txtIngresar);
+	int espacioDisponible= MAX_CONT - espacioUsado;
 	
-	strcpy(leer, cad);
-	
-	do{
-		leer = getchar();
-		pos++;
+	if(espacioDisponible >= espacioAUsar){
+		cout<<"espacioDisponible >= espacioAUsar"<<endl;
+		return txtIngresar;
+	} else {
+		Cadena auxChar = new char[espacioDisponible];
+		strcpy(auxChar, txtIngresar);
+		cout<<auxChar<<endl;
 		
-	}while(leer!='\0');
-	
-	cout << "pos = "<< pos <<endl;
-	
-	return pos;
-}*/
+		return auxChar;
+	}
+}
+
+

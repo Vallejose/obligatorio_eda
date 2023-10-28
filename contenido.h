@@ -28,4 +28,6 @@ contenido Insertar_contenido(contenido c, Cadena text);
 //
 //int cuenta_letras(Cadena cad);
 
+Cadena add_chars(Cadena txtIngresar, int espacioUsado);
+
 #endif
