@@ -10,8 +10,8 @@
 
 #define MAX_COMANDO 50
 #define MAX_NOMBRE 15
-#define MAX_EXT 3
-#define MAX_CONT 10
+#define MAX_EXT 4 //inncluye el punto
+#define MAX_CONT 3
 
 enum _retorno{ OK, ERROR, NO_IMPLEMENTADA};
 typedef enum _retorno TipoRet;

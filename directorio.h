@@ -31,15 +31,8 @@ list_archivos listArchs(directorio d);
 	
 bool isEmpty_dir(directorio d);
 //Retorna true si d es vacio, false en caso contrario
-/*
-directorio eliminar_dir(directorio d);
-//Destruye d y libera la memoria asociada*/
 
 directorio Crear_Directorio(Cadena nombre);
 // Retorna un directorio de nombre "nombre".
 
-
- /*bool IsEmpty_listArchivos(list_archivos ar);
-//Retorna true si ar es vacia y false en caso contrario;
-*/
 #endif

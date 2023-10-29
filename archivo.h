@@ -23,9 +23,6 @@ Cadena Nombre_archivo(archivo a);
 //Pre: a no es vacio.
 
 
-contenido Contenido_Arch(archivo a);
-//Retorna el contenido del arcchivo a
-
 
 Cadena Extension_archivo(archivo a);
 //Retorna la extencion del archivo a.
@@ -36,8 +33,12 @@ bool Escritura_archivo(archivo a);
 //Retorna true si se puede escribir el archivo y false en caso contrario
 
 
-archivo Crear_archivo(Cadena nombreArch);
+archivo Crear_archivo(Cadena nombreArch, Cadena ext);
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
+
+
+contenido Contenido_Arch(archivo a);
+//Retorna el contenido del arcchivo a
 
 
 bool IsNull_archivo(archivo a);
@@ -50,5 +51,12 @@ archivo Eliminar_archivo(archivo a);
 archivo Insertar_cont_arch(archivo a, contenido c);
 //Inserta un nodo contenido en un archivo
 //Pre:el archivo y el contenido no pueden ser nulos
+
+Cadena Extraer_Nombre(Cadena nomArchivo, bool &ext);
+//Dada un nombre y la extension, retorna el nombre del archivo 
+
+Cadena Extraer_Ext(Cadena nomArchivo);
+//Dada un nombre y la extension, retorna la ext del archivo
+//Pre: extension no puede ser vacia
 
 #endif
