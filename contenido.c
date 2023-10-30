@@ -7,8 +7,11 @@
 
 #include <string.h>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include "definiciones.h"
 #include "contenido.h"
+
 
 using namespace std;
 
@@ -21,24 +24,54 @@ contenido Null_contenido(){
 	return NULL;
 }
 
-Cadena Retorna_contenido(contenido c){
+Cadena Retorna_cad_cont(contenido c){
 //Retorna el contenido c.
 	return c->content;
 }
 
 bool IsNull_contenido(contenido c){
-//Retorna true si el contenido es cacion y false en caso contrario
+//Retorna true si el contenido es vacio y false en caso contrario
 	return (c == NULL);
 }
 
-//Crear contenido
-//Eliminar archivo
-/*
-Cadena Crear_contenido(){
-//Retorna un contenido para un archivo
-	contenido cont = new(nodo_contenido);
-	Cadena aux = new char[MAX_CONT];
-	strcpy(aux, "hola");
+contenido Insertar_contenido(contenido c, Cadena text){
+//Dada una cadena de texto y un contenido c, inserta le texto en el contenido c
+	contenido aux = new(nodo_contenido);
+	aux->content = text;
 	return aux;
 }
-*/
+	
+Cadena add_chars(Cadena txtIngresar, int espacioUsado){
+//Concatena la cadena existente de texto del contenido, 
+//con el texto ingrado por el usuario hasta llegar al maximo permitido
+	int espacioAUsar = strlen(txtIngresar);
+	int espacioDisponible= MAX_CONT - espacioUsado;
+
+	if(espacioAUsar <= espacioDisponible)
+		return txtIngresar;
+	else{
+		Cadena ax = new char[MAX_CONT];
+		for (int m=0; m<espacioDisponible; m++) {
+			ax[m] = txtIngresar[m];
+		}
+		return ax;
+	}
+}
+	
+Cadena del_chars(Cadena txtborrar, int espacioLiberar){
+//Elimina una n de caracteres de una cadena de texto dada por el usuario
+//Pre: La cadena no puede ser vacio
+	int espacioUsado = strlen(txtborrar);
+	int espacioDisponible= espacioUsado - espacioLiberar;
+	
+	if(espacioLiberar >= espacioUsado){
+		Cadena ax = new char[MAX_CONT];
+		return ax;
+	}else{
+		Cadena ax = new char[MAX_CONT];
+		for (int m=0; m<espacioDisponible; m++) {
+			ax[m] = txtborrar[m];
+		}
+	return ax;
+	}
+}

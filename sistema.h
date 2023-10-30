@@ -9,7 +9,6 @@
 // Modulo de Definición del File System.
 
 
-#include "sistema.h"
 #include "directorio.h"
 #include "listArchivos.h"
 #include "archivo.h"
@@ -54,7 +53,6 @@ bool existe_arch(list_archivos l, Cadena nombreAr);
 	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
 	//Pre: lista no es vacia
 
-archivo buscar_archivo(list_archivos l, Cadena nombreAr);
 
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo);
 // Elimina un archivo del directorio actual, siempre y cuando no sea de sólo lectura.
@@ -83,6 +81,10 @@ TipoRet DF (Sistema &s, Cadena nombreArchivo, int k);
 TipoRet TYPE (Sistema &s, Cadena nombreArchivo);
 // Imprime el contenido del archivo parámetro.
 // Para mas detalles ver letra.
+
+archivo buscar_archivo(list_archivos l, Cadena nombreAr);
+//Devuelve un archivo de nombreAr, de una lista de archivos, NULL si no lo encuentra
+//Pre: lista no es vacia
 
 TipoRet SEARCH (Sistema &s, Cadena nombreArchivo, Cadena texto);
 // Busca dentro del archivo la existencia del texto.

@@ -42,22 +42,65 @@ bool Escritura_archivo(archivo a){
 	return a->escritura;
 }
 
-archivo Crear_archivo(Cadena nombreArch){
+archivo Crear_archivo(Cadena nombreArch, Cadena ext){
 //Crea un archivo de nombre nombre, extencion exten, escritura true y contenido vacio
+	
 	archivo aux = new(_archivo);
 	aux->nombre = new char[MAX_NOMBRE];
 	strcpy(aux->nombre, nombreArch);
 	aux->exten = new char[MAX_EXT];
-	strcpy(aux->exten, "txt");
+	strcpy(aux->exten, ext);
 	aux->escritura = true;
 	aux->cont = NULL;
 	return aux;
+}
+
+Cadena Extraer_Nombre(Cadena nomArchivo, bool &ext){
+//Dada un nombre y la extension, retorna el nombre del archivo 
+	int tamNombre = strlen(nomArchivo);
+	Cadena nomAux = new char [MAX_NOMBRE];
+	int iter = 0;
+	
+	do{
+		nomAux[iter] = nomArchivo[iter];
+		iter++;
+	}while(nomArchivo[iter] != '.' && iter <= tamNombre);
+	
+	if(iter > tamNombre){
+		ext = false;
+	} else {
+		ext = true;
+	}
+	
+	return nomAux;
+}
+
+Cadena Extraer_Ext(Cadena nomArchivo){
+//Dada un nombre y la extension, retorna la ext del archivo
+//Pre: extension no puede ser vacia
+	int tamNombre = strlen(nomArchivo);
+	Cadena extAux = new char [MAX_EXT];
+	int iter = 0, iterDos = 0;	
+	bool guardar = false;
+	
+	while(iter <= tamNombre){
+		if(nomArchivo[iter] == '.'){
+			guardar = true;
+		}
+		if(guardar){
+			extAux[iterDos] = nomArchivo[iter];
+			iterDos++;
+		}
+		iter++;
+	}
+	return extAux;
 }
 
 contenido Contenido_Arch(archivo a){
 //Retorna el contenido del arcchivo a
 	return a->cont;
 }	
+
 bool IsNull_archivo(archivo a){
 // retorna true si el archivo a esta vacio y false en caso contrario
 	return (a == NULL);
@@ -69,7 +112,10 @@ archivo Eliminar_archivo(archivo a){
 	return a;
 }
 
-
-
-
-//contenido Contenido_archivo(archivo a)??
+archivo Insertar_cont_arch(archivo a, contenido c){
+//Inserta un nodo contenido en un archivo
+//Pre:el archivo y el contenido no pueden ser nulos
+	archivo aux = a;
+	aux -> cont = c;
+	return aux;
+}
