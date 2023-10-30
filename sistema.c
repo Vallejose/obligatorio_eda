@@ -218,7 +218,6 @@ TipoRet IC (Sistema &s, Cadena nombreArchivo, Cadena texto){
 						strcat(texto,auxDos);
 						strcpy(cadCon,texto);
 					}*/
-					
 				}
 			}
 			auxCont = Insertar_contenido(auxCont, cadCon);
