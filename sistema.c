@@ -242,6 +242,8 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 // Para mas detalles ver letra.
 	directorio di_aux = Dir_act(s);
 	list_archivos auxLis = listArchs(di_aux);
+	int tamTxt = strlen(texto);
+	Cadena aux;
 	
 	if(existe_arch(auxLis, nombreArchivo)){
 		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
@@ -250,13 +252,26 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 			Cadena cadCon;
 			if(auxCont == NULL){
 				cadCon = new char[MAX_CONT];
-				Cadena aux = add_chars(texto,0);
+				aux = add_chars(texto,0);
 				strcpy(cadCon,aux);
 			}else{
+				if(tamTxt > MAX_CONT){
+					aux = add_chars(texto,0);
+					strcpy(cadCon,aux);
+				}else if(tamTxt == MAX_CONT){
+					strcpy(cadCon,texto);
+				}else{
+					cadCon = Retorna_cad_cont(auxCont);
+					Cadena aux = add_chars(cadCon,tamTxt);
+
+					strcpy(cadCon,aux);
+					strcat(cadCon,texto);
+				}
+/*
 				cadCon = Retorna_cad_cont(auxCont);
 				int largo = strlen(cadCon);
 				Cadena aux = add_chars(texto,largo);
-				strcat(cadCon, aux);
+				strcat(cadCon, aux);*/
 			}
 			auxCont = Insertar_contenido(auxCont, cadCon);
 			ar_aux = Insertar_cont_arch(ar_aux,auxCont);
@@ -278,12 +293,6 @@ TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 TipoRet DC (Sistema &s, Cadena nombreArchivo, int k){
 // Elimina los a lo sumo K primeros caracteres del archivo parámetro.
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
-}
-
-TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
-// Elimina los a lo sumo K últimos caracteres del archivo parámetro.
-// Para mas detalles ver letra.
 	directorio di_aux = Dir_act(s);
 	list_archivos auxLis = listArchs(di_aux);
 
@@ -296,8 +305,8 @@ TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 				cout << "archivo vacio" << endl;
 			}else{
 				cadCon = Retorna_cad_cont(auxCont);
-				int largo = strlen(cadCon);
-				Cadena aux = del_chars(cadCon,k);
+				//int largo = strlen(cadCon);
+				Cadena aux = del_chars_init(cadCon,k);
 				strcpy(cadCon, aux);
 				auxCont = Insertar_contenido(auxCont, cadCon);
 				ar_aux = Insertar_cont_arch(ar_aux,auxCont);
@@ -315,7 +324,43 @@ TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
 		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
 		return ERROR;
 	}
-	return NO_IMPLEMENTADA;
+
+}
+
+TipoRet DF (Sistema &s, Cadena nombreArchivo, int k){
+// Elimina los a lo sumo K últimos caracteres del archivo parámetro.
+// Para mas detalles ver letra.
+	directorio di_aux = Dir_act(s);
+	list_archivos auxLis = listArchs(di_aux);
+
+	if(existe_arch(auxLis, nombreArchivo)){
+		archivo ar_aux = buscar_archivo(auxLis, nombreArchivo);
+		if(Escritura_archivo(ar_aux)){
+			contenido auxCont = Contenido_Arch(ar_aux);
+			Cadena cadCon;
+			if(auxCont == NULL){
+				cout << "archivo vacio" << endl;
+			}else{
+				cadCon = Retorna_cad_cont(auxCont);
+				//int largo = strlen(cadCon);
+				Cadena aux = del_chars_end(cadCon,k);
+				strcpy(cadCon, aux);
+				auxCont = Insertar_contenido(auxCont, cadCon);
+				ar_aux = Insertar_cont_arch(ar_aux,auxCont);
+				auxLis = Insert_listArchivos(ar_aux,auxLis);
+				Insert_lista(auxLis,di_aux);
+				s->actual = di_aux;
+				s->raiz = di_aux;
+			}
+			return OK;
+		} else {
+			cout <<"El archivo es solo de lectura, TARADO!"<<endl;
+			return ERROR;
+		}	
+	} else {
+		cout <<"No existe archivo con ese nombre en el directorio"<<endl;
+		return ERROR;
+	}
 }
 
 TipoRet TYPE (Sistema &s, Cadena nombreArchivo){

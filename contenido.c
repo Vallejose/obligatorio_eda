@@ -58,8 +58,8 @@ Cadena add_chars(Cadena txtIngresar, int espacioUsado){
 	}
 }
 	
-Cadena del_chars(Cadena txtborrar, int espacioLiberar){
-//Elimina una n de caracteres de una cadena de texto dada por el usuario
+Cadena del_chars_end(Cadena txtborrar, int espacioLiberar){
+//Elimina los n ultimos caracteres de una cadena de texto dada por el usuario
 //Pre: La cadena no puede ser vacio
 	int espacioUsado = strlen(txtborrar);
 	int espacioDisponible= espacioUsado - espacioLiberar;
@@ -72,6 +72,32 @@ Cadena del_chars(Cadena txtborrar, int espacioLiberar){
 		for (int m=0; m<espacioDisponible; m++) {
 			ax[m] = txtborrar[m];
 		}
+	return ax;
+	}
+}
+
+
+Cadena del_chars_init(Cadena txtborrar, int espacioLiberar){
+//Elimina los n primeros de caracteres de una cadena de texto dada por el usuario
+//Pre: La cadena no puede ser vacio
+	int espacioUsado = strlen(txtborrar);
+	int espacioDisponible= espacioUsado - espacioLiberar;
+	
+	if(espacioLiberar >= espacioUsado){
+		Cadena ax = new char[MAX_CONT];
+		return ax;
+	}else{
+		Cadena ax = new char[MAX_CONT];
+		int i = 0;
+		while(i<=espacioDisponible && i+espacioLiberar<= espacioUsado){
+			ax[i] = txtborrar[i+espacioLiberar];
+			i++;
+		}
+		/*
+		for (int m=0; m<espacioDisponible; m++) {
+			if()
+			ax[m] = txtborrar[m+espacioLiberar];//Falta condicion de corte: sino se pasa del arreglo
+		}*/
 	return ax;
 	}
 }
