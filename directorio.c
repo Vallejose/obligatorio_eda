@@ -13,9 +13,10 @@
 #include <iostream>
 
 struct nodo_directorio{
-// directorios ver seg entrega
-	list_archivos archs;
 	Cadena nombre;
+	list_archivos archs;
+	directorio dirInt;
+	directorio dirSig;
 };
 
 directorio isNull (){
@@ -42,7 +43,7 @@ list_archivos listArchs(directorio d){
 }
 	
 bool isEmpty_dir(directorio d){
-	//Retorna true si d es vacio, false en caso contrario
+//Retorna true si d es vacio, false en caso contrario
 	return(d == NULL);
 }
 	
@@ -52,5 +53,17 @@ directorio Crear_Directorio(Cadena nombre){
 	d->nombre = new char[MAX_NOMBRE];
 	strcpy(d->nombre, nombre);
 	d->archs = NULL;
+	d->dirSig = NULL;
+	d->dirInt = NULL;
 	return d;
+}
+
+directorio Directorio_interno(directorio d){
+//Devuelve la lista de directorios internos que tiene d.
+	return d->dirInt;
+}
+
+directorio Directorio_siguiente(directorio d){
+//Devuelve la lista de directorios siguientes de d sin el primer elemento.
+	return d->dirSig;
 }

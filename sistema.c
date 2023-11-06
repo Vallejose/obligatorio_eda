@@ -47,6 +47,13 @@ TipoRet CD (Sistema &s, Cadena nombreDirectorio){
 TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Crea un nuevo directorio. 
 // Para mas detalles ver letra.
+
+	directorio dirAux = Dir_act(s);
+
+
+
+
+
 	return NO_IMPLEMENTADA;
 }
 

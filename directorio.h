@@ -35,4 +35,10 @@ bool isEmpty_dir(directorio d);
 directorio Crear_Directorio(Cadena nombre);
 // Retorna un directorio de nombre "nombre".
 
+directorio Directorio_interno(directorio d);
+//Devuelve la lista de directorios internos que tiene d.
+
+directorio Directorio_siguiente(directorio d);
+//Devuelve la lista de directorios siguientes de d sin el primer elemento.
+
 #endif
