@@ -19,7 +19,8 @@ struct nodo_directorio{
 	directorio dirSig;
 };
 
-directorio isNull (){
+
+directorio Null_directorio (){
 //retorna un directorio vacio
 	return NULL;
 }
@@ -66,4 +67,56 @@ directorio Directorio_interno(directorio d){
 directorio Directorio_siguiente(directorio d){
 //Devuelve la lista de directorios siguientes de d sin el primer elemento.
 	return d->dirSig;
+}
+
+bool Existe_dir(directorio d, Cadena nombreDir){
+// Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
+	dirAux = d;
+
+	while(d->dirSig != NULL){
+		if(nombreDir == d->nombre){
+			return true;
+		}
+		d = d->dirSig;
+	}
+	return false;
+}
+
+
+directorio Insert_dir_sig(directorio dInsrt, directorio d){
+	directorio dirRet = Null_directorio;
+	Cadena nomInsrt = Nombre_directorio(dInsrt), nomDir;
+
+	bool agregado = false;
+	if(isEmpty_dir(d)){
+		///TERMINAR
+	}
+
+}
+
+directorio Cons_Directorio(directorio dInsert, directorio d){
+//Inserta un directorio al principio de una lista de directorios
+	directorio dAux = new(nodo_directorio);
+	dAux = dInsert;
+	dAux->dirSig = d;
+	return dAux;
+}
+
+directorio Snoc_Directorio(directorio dInsert, directorio d){
+// Inserta un directorio al final de una lista de directorios.
+	directorio dAux = new(nodo_directorio);
+	directorio iter = d;
+	dAux = dInsert;
+	dAux->dirSig = NULL;
+
+	while(iter != NULL && iter->dirSig != NULL){
+		iter = iter->dirSig;
+	}
+	if(iter == NULL){
+		return dAux;
+	}else{
+		iter->dirSig = dAux;
+		return d;
+	}
+	
 }

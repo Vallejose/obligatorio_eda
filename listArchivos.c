@@ -62,7 +62,7 @@ list_archivos Snoc_listArchivos(archivo a, list_archivos ar){
 	}
 }
 
-// Revisoar
+// Revisar
 list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Inserta un archivo de manera ordenada, en una lista ordenada
 

@@ -15,7 +15,7 @@
 
 typedef struct nodo_directorio * directorio;
 
-directorio isNull ();
+directorio Null_directorio ();
 //retorna un directorio vacio
 
 Cadena Nombre_directorio(directorio d);
@@ -40,5 +40,18 @@ directorio Directorio_interno(directorio d);
 
 directorio Directorio_siguiente(directorio d);
 //Devuelve la lista de directorios siguientes de d sin el primer elemento.
+
+bool Existe_dir(directorio d, Cadena nombreDir);
+// Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
+
+directorio Cons_Directorio(directorio dInsert, directorio d);
+//Inserta un directorio al principio de una lista de directorios
+
+directorio Snoc_Directorio(directorio dInsert, directorio d);
+// Inserta un directorio al final de una lista de directorios.
+
+
+
+
 
 #endif

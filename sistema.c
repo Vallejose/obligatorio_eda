@@ -48,8 +48,19 @@ TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Crea un nuevo directorio. 
 // Para mas detalles ver letra.
 
-	directorio dirAux = Dir_act(s);
+	directorio dirSis = Dir_act(s);
+	directorio dirAux;
 
+	if(!Existe_dir(dirSis)){
+		dirAux = Crear_Directorio(nombreDirectorio)
+	}else if(Existe_dir(dirSis)){
+		cout << "Ya existe un directorio con ese nombre" << endl;
+		return ERROR;
+	}else if(nombreDirectorio == "RAIZ" && nombreDirectorio == "raiz" && nombreDirectorio == "ROOT" && nombreDirectorio == "root"){
+		cout << "No puede existir un directorio con ese nombre" << endl;
+		return ERROR;
+	}
+	///TERMINAR
 
 
 
