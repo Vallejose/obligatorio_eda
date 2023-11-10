@@ -49,11 +49,11 @@ TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Para mas detalles ver letra.
 
 	directorio dirSis = Dir_act(s);
-	directorio dirAux;
+	directorio dirInt = Directorio_interno(dirSis);
 
-	if(!Existe_dir(dirSis)){
-		dirAux = Crear_Directorio(nombreDirectorio);
-		
+	if(!Existe_dir(dirInt)){
+		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
+		directorio dirRet = Insert_dir(dirInsrt,dirInt);
 	}else if(Existe_dir(dirSis)){
 		cout << "Ya existe un directorio con ese nombre" << endl;
 		return ERROR;

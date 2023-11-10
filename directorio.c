@@ -68,7 +68,7 @@ directorio Directorio_siguiente(directorio d){
 //Devuelve la lista de directorios siguientes de d sin el primer elemento.
 	return d->dirSig;
 }
-/*
+
 bool Existe_dir(directorio d, Cadena nombreDir){
 // Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
 	dirAux = d;
@@ -84,14 +84,26 @@ bool Existe_dir(directorio d, Cadena nombreDir){
 
 
 directorio Insert_dir(directorio dInsrt, directorio d){
+	directorio dirAux = d;
 	directorio dirRet = Null_directorio;
 	Cadena nomInsrt = Nombre_directorio(dInsrt), nomDir;
-
+	directorio tailD = Tail_directorio(d);
 	bool agregado = false;
 	if(isEmpty_dir(d)){
-		///TERMINAR
+		Snoc_Directorio(dInsrt,dirRet);		
+	} else if(isEmpty_dir(tailD)){
+		nomDir = Nombre_directorio(d);
+		int resultComp = strcmp(nomDir, nomInsrt);
+		if(resultComp > 0){
+			dirRet = Cons_Directorio(dInsrt, dirRet);
+			dirRet = Snoc_Directorio(d, dirRet);
+		} else if (resultComp < 0){
+			dirRet = Cons_Directorio(d, dirRet);
+			dirRet = Snoc_Directorio(dInsrt, dirRet);
+		}
+	} else {
+		
 	}
-
 }
 
 directorio Cons_Directorio(directorio dInsert, directorio d){
@@ -119,4 +131,8 @@ directorio Snoc_Directorio(directorio dInsert, directorio d){
 		return d;
 	}
 }
-*/
+
+directorio Tail_directorio(directorio d){
+//Retorna una lista de directorios sin su primer elemento
+	return d->dirSig;
+}
