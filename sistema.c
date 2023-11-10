@@ -52,7 +52,8 @@ TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 	directorio dirAux;
 
 	if(!Existe_dir(dirSis)){
-		dirAux = Crear_Directorio(nombreDirectorio)
+		dirAux = Crear_Directorio(nombreDirectorio);
+		
 	}else if(Existe_dir(dirSis)){
 		cout << "Ya existe un directorio con ese nombre" << endl;
 		return ERROR;
@@ -189,7 +190,7 @@ TipoRet ATTRIB (Sistema &s, Cadena nombreArchivo, Cadena parametro){
 }
 
 TipoRet IC (Sistema &s, Cadena nombreArchivo, Cadena texto){
-// Agrega un texto al final del archivo NombreArchivo.
+// Agrega un texto al principio del archivo NombreArchivo.
 // Para mas detalles ver letra.
 	directorio di_aux = Dir_act(s);
 	list_archivos auxLis = listArchs(di_aux);
@@ -224,18 +225,12 @@ TipoRet IC (Sistema &s, Cadena nombreArchivo, Cadena texto){
 					strcpy(cadCon, texto);
 					
 				}else{
-					cadCon = Retorna_cad_cont(auxCont);
-					int txtYaIngresado = strlen(cadCon);
-					//int espacioOcupado = MAX_CONT - tamanTexto; /*NO NECESITO HACER LA CUENTA LO OCUPADO ME LO DA EL COUNT DEL TEXTO A INGRESAT */
-					Cadena auxDos = add_chars(cadCon,tamanTexto);
+					Cadena auxDos;
+					cadCon = new char[MAX_CONT];
+					Cadena cadAux= Retorna_cad_cont(auxCont);
+					auxDos = add_chars(cadAux,tamanTexto);
 					strcpy(cadCon,texto);
 					strcat(cadCon,auxDos);
-					/*NO ES NECESARIO EL IF, YA SE QUE ME VAN A INGREAR TEXTO MENOR AL MAXIMO*/
-					/*if(espacioLibre > 0){
-						Cadena auxDos = add_chars(cadCon,espacioLibre);
-						strcat(texto,auxDos);
-						strcpy(cadCon,texto);
-					}*/
 				}
 			}
 			auxCont = Insertar_contenido(auxCont, cadCon);

@@ -68,7 +68,7 @@ directorio Directorio_siguiente(directorio d){
 //Devuelve la lista de directorios siguientes de d sin el primer elemento.
 	return d->dirSig;
 }
-
+/*
 bool Existe_dir(directorio d, Cadena nombreDir){
 // Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
 	dirAux = d;
@@ -83,7 +83,7 @@ bool Existe_dir(directorio d, Cadena nombreDir){
 }
 
 
-directorio Insert_dir_sig(directorio dInsrt, directorio d){
+directorio Insert_dir(directorio dInsrt, directorio d){
 	directorio dirRet = Null_directorio;
 	Cadena nomInsrt = Nombre_directorio(dInsrt), nomDir;
 
@@ -118,5 +118,5 @@ directorio Snoc_Directorio(directorio dInsert, directorio d){
 		iter->dirSig = dAux;
 		return d;
 	}
-	
 }
+*/
