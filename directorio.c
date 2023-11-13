@@ -50,6 +50,7 @@ bool isEmpty_dir(directorio d){
 	
 directorio Crear_Directorio(Cadena nombre){
 // Retorna un directorio de nombre "nombre".
+	printf("Estoy dentro de crear directorio \n");/// De prueba BORRAR antes de entregar
 	directorio d = new(nodo_directorio);
 	d->nombre = new char[MAX_NOMBRE];
 	strcpy(d->nombre, nombre);
@@ -71,10 +72,12 @@ directorio Directorio_siguiente(directorio d){
 
 bool Existe_dir(directorio d, Cadena nombreDir){
 // Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
-	dirAux = d;
+	directorio dirAux = d;
+	int compare;
 
 	while(d->dirSig != NULL){
-		if(nombreDir == d->nombre){
+		compare = strcmp(nombreDir, d->nombre);
+		if(compare == 0){
 			return true;
 		}
 		d = d->dirSig;
@@ -84,26 +87,57 @@ bool Existe_dir(directorio d, Cadena nombreDir){
 
 
 directorio Insert_dir(directorio dInsrt, directorio d){
+
 	directorio dirAux = d;
-	directorio dirRet = Null_directorio;
+	directorio dirRet;
 	Cadena nomInsrt = Nombre_directorio(dInsrt), nomDir;
-	directorio tailD = Tail_directorio(d);
+	printf("Me traje el nombre del directorio a ingresar y es: %s \n",nomInsrt); // Prueba, BORRAR antes de entregar
+
+	int resultComp;
 	bool agregado = false;
+	printf("HOLA COMO ESTAS VOS");
+	nomDir = Nombre_directorio(d);
+	printf("El nombre del directorio es: %s",nomDir);
+
+	if(nomDir == "RAIZ"){
+		printf("Estoy en el directorio RAIZ");
+	}
+
+
+
+
+
+
 	if(isEmpty_dir(d)){
 		Snoc_Directorio(dInsrt,dirRet);		
-	} else if(isEmpty_dir(tailD)){
+	} else if(isEmpty_dir(Tail_directorio(d))){
 		nomDir = Nombre_directorio(d);
-		int resultComp = strcmp(nomDir, nomInsrt);
+		resultComp = strcmp(nomDir, nomInsrt);
 		if(resultComp > 0){
 			dirRet = Cons_Directorio(dInsrt, dirRet);
 			dirRet = Snoc_Directorio(d, dirRet);
 		} else if (resultComp < 0){
 			dirRet = Cons_Directorio(d, dirRet);
-			dirRet = Snoc_Directorio(dInsrt, dirRet);
 		}
 	} else {
-		
+		while(!isEmpty_dir(dirAux)){
+			nomDir = Nombre_directorio(dirAux);
+			resultComp = strcmp(nomDir, nomInsrt);
+			if(resultComp > 0){
+				if(!agregado){
+					dirRet = Snoc_Directorio(dInsrt, dirRet);
+					agregado = true;
+				}
+				dirRet = Snoc_Directorio(dirAux, dirRet);
+			}else{
+				dirRet = Snoc_Directorio(dirAux,dirRet);
+				if(isEmpty_dir(Tail_directorio(d)))
+				dirRet = Snoc_Directorio(dInsrt, dirRet);
+			}
+			dirAux  = dirAux->dirSig;
+		}
 	}
+	return dirRet;
 }
 
 directorio Cons_Directorio(directorio dInsert, directorio d){
@@ -120,19 +154,35 @@ directorio Snoc_Directorio(directorio dInsert, directorio d){
 	directorio iter = d;
 	dAux = dInsert;
 	dAux->dirSig = NULL;
-
 	while(iter != NULL && iter->dirSig != NULL){
 		iter = iter->dirSig;
+
+		if(isEmpty_dir(iter)){
+			printf("Iter ests vacio \n");
+		}else{
+			printf("iter no es vacio  \n");
+			if(isEmpty_dir(Tail_directorio(iter))){
+				printf("el siguiente elemento es NULL  \n");
+			}else{
+				printf("el siguiente elemento no es NULL \n");
+			}
+		} 
+		
 	}
+
 	if(iter == NULL){
+		printf("Iter = NULL \n");
 		return dAux;
 	}else{
+		printf("Estoy en el else \n");
 		iter->dirSig = dAux;
 		return d;
 	}
+	printf("Llega hasta aca la funcion?? \n");
 }
 
 directorio Tail_directorio(directorio d){
 //Retorna una lista de directorios sin su primer elemento
+//Pre: d no puede ser vacio
 	return d->dirSig;
 }

@@ -44,13 +44,17 @@ directorio Directorio_siguiente(directorio d);
 bool Existe_dir(directorio d, Cadena nombreDir);
 // Retorna true si encuentra un directorio con ese nombre y false en caso contrario.
 
+directorio Insert_dir(directorio dInsrt, directorio d);
+//Inserta un nuevo directorio de manera ordenada, en el directorio en el que estoy parado.
+
 directorio Cons_Directorio(directorio dInsert, directorio d);
 //Inserta un directorio al principio de una lista de directorios
 
 directorio Snoc_Directorio(directorio dInsert, directorio d);
 // Inserta un directorio al final de una lista de directorios.
 
-
+directorio Tail_directorio(directorio d);
+//Retorna una lista de directorios sin su primer elemento
 
 
 

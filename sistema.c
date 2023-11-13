@@ -47,23 +47,42 @@ TipoRet CD (Sistema &s, Cadena nombreDirectorio){
 TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Crea un nuevo directorio. 
 // Para mas detalles ver letra.
-
+cout << "Estoy en mkdir" << endl;
+	bool existencia;
 	directorio dirSis = Dir_act(s);
-	directorio dirInt = Directorio_interno(dirSis);
 
-	if(!Existe_dir(dirInt)){
+	bool noExiste = isEmpty_dir(Directorio_interno(dirSis));
+	if(noExiste){
+		cout << "El directorio no existe" << endl;
+	}else{
+		cout << "el directorio existe" << endl;
+	}
+
+	
+	directorio dirInt = Directorio_interno(dirSis);
+	cout << "Se rompe antes de llegar a este punto??" << endl;
+	//existencia  = Existe_dir(dirInt,nombreDirectorio);
+	//cout << "Y a este??" << endl;
+	if(noExiste){
+		cout << "El directorio donde voya crear esta vacio" << endl;
+		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
+		cout << "Ya cree el directorio que voy a agregar" << endl;
+		directorio dirRet = Insert_dir(dirInsrt,dirInt);
+		cout << "Logre insertar el directorio" << endl;
+	}else if(!Existe_dir(dirInt,nombreDirectorio)){
+		cout << "No existe el directorio que voy a agregar" << endl;
 		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
 		directorio dirRet = Insert_dir(dirInsrt,dirInt);
-	}else if(Existe_dir(dirSis)){
-		cout << "Ya existe un directorio con ese nombre" << endl;
-		return ERROR;
 	}else if(nombreDirectorio == "RAIZ" && nombreDirectorio == "raiz" && nombreDirectorio == "ROOT" && nombreDirectorio == "root"){
 		cout << "No puede existir un directorio con ese nombre" << endl;
 		return ERROR;
+	}else{
+		cout << "Ya existe un directorio con ese nombre" << endl;
+		return ERROR;
 	}
 	///TERMINAR
-
-
+	///	REVISAR COMO IMPLEMENTAR LA FUNCIONES, SI ESTOY EN EL ROOT SOLO PUEDO GENERAR UNA CARPETA INTERNA, NO SOIGUIENTE, EN EL RESTO SI
+	// PENSAR COMO IMPLEMENTAR
 
 
 	return NO_IMPLEMENTADA;
