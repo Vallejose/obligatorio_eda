@@ -8,6 +8,7 @@
 
 #include <string.h>
 #include <iostream>
+
 #include "sistema.h"
 #include "directorio.h"
 #include "listArchivos.h"
@@ -43,49 +44,28 @@ TipoRet CD (Sistema &s, Cadena nombreDirectorio){
 // Para mas detalles ver letra.
 	return NO_IMPLEMENTADA;
 }
-	
+
 TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Crea un nuevo directorio. 
 // Para mas detalles ver letra.
-cout << "Estoy en mkdir" << endl;
 	bool existencia;
 	directorio dirSis = Dir_act(s);
+	Cadena nDir = Nombre_directorio(dirSis);
 
-	bool noExiste = isEmpty_dir(Directorio_interno(dirSis));
-	if(noExiste){
-		cout << "El directorio no existe" << endl;
+
+	if(strcmp(nDir,"RAIZ") == 0){
+		cout << "Estoy en el directorio raiz estoy en: " << nDir << endl;
+		directorio dInt = Directorio_interno(dirSis);
+		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
+		Insert_dir(dirInsrt, dInt);
 	}else{
-		cout << "el directorio existe" << endl;
-	}
-
+		cout << "No estoy en el directorio raiz estoy en: "<< nDir << endl;
+		directorio dSig = Directorio_siguiente(dirSis);
+		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
+		Insert_dir(dirInsrt, dSig);
+	}	
 	
-	directorio dirInt = Directorio_interno(dirSis);
-	cout << "Se rompe antes de llegar a este punto??" << endl;
-	//existencia  = Existe_dir(dirInt,nombreDirectorio);
-	//cout << "Y a este??" << endl;
-	if(noExiste){
-		cout << "El directorio donde voya crear esta vacio" << endl;
-		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
-		cout << "Ya cree el directorio que voy a agregar" << endl;
-		directorio dirRet = Insert_dir(dirInsrt,dirInt);
-		cout << "Logre insertar el directorio" << endl;
-	}else if(!Existe_dir(dirInt,nombreDirectorio)){
-		cout << "No existe el directorio que voy a agregar" << endl;
-		directorio dirInsrt = Crear_Directorio(nombreDirectorio);
-		directorio dirRet = Insert_dir(dirInsrt,dirInt);
-	}else if(nombreDirectorio == "RAIZ" && nombreDirectorio == "raiz" && nombreDirectorio == "ROOT" && nombreDirectorio == "root"){
-		cout << "No puede existir un directorio con ese nombre" << endl;
-		return ERROR;
-	}else{
-		cout << "Ya existe un directorio con ese nombre" << endl;
-		return ERROR;
-	}
-	///TERMINAR
-	///	REVISAR COMO IMPLEMENTAR LA FUNCIONES, SI ESTOY EN EL ROOT SOLO PUEDO GENERAR UNA CARPETA INTERNA, NO SOIGUIENTE, EN EL RESTO SI
-	// PENSAR COMO IMPLEMENTAR
-
-
-	return NO_IMPLEMENTADA;
+	return OK;
 }
 
 TipoRet RMDIR (Sistema &s, Cadena nombreDirectorio){
@@ -158,24 +138,17 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 			return ERROR;
 		} else {
 			if(IsEmpty_listArchivos(auxLa)){
-				cout << "lista vacia" << endl;
-				
 				archivo auxA = Crear_archivo(auxNom, auxExt);	
 				auxLa = Insert_listArchivos(auxA,auxLa);
 				Insert_lista(auxLa, auxDir);
-				cout<<"inserte el archivo en la lista y la lista en el dir"<<endl;
 				s->actual = auxDir;
 				s->raiz = auxDir;
 				return OK;
 			} else {
-				cout <<"lista con 1 archivo o más"<< endl;
-				
 				if(existe_arch(auxLa, nombreArchivo)){
-					cout << "nombre de archivo ya existente ";
+					cout << "nombre de archivo ya existente "<< endl;
 					return ERROR;
 				} else {
-					
-					cout << "se supone que no existe el archivo" <<endl;
 					archivo auxA = Crear_archivo(auxNom, auxExt);	
 					auxLa = Insert_listArchivos(auxA,auxLa);
 					Insert_lista(auxLa, auxDir);
@@ -188,19 +161,6 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo){
 	}
 }
 	
-/*bool existe_arch(list_archivos l, Cadena nombreAr){
-	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
-	//Pre: lista no es vacia
-	
-	Cadena nombreEvaluar = Nombre_archivo(Head_listArchivos(l));
-	if(strcmp(nombreEvaluar,nombreAr) == 0)
-		return true;
-	else if (Tail_listArchivos(l) == NULL)
-		return false;	
-	else 
-		return existe_arch(Tail_listArchivos(l), nombreAr);
-	
-}*/
 
 TipoRet DELETE (Sistema &s, Cadena nombreArchivo){
 // Elimina un archivo del directorio actual, siempre y cuando no sea de sólo lectura.

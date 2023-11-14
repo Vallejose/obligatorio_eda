@@ -12,6 +12,9 @@
 #include <string.h>
 #include <iostream>
 
+using namespace std;
+
+
 struct nodo_directorio{
 	Cadena nombre;
 	list_archivos archs;
@@ -28,6 +31,7 @@ directorio Null_directorio (){
 Cadena Nombre_directorio(directorio d){
 //Retorna el nombre del directorio d
 //Pre: d no es vacio
+	cout<<"estoy en nombre_directorio: "<<d->nombre<<endl;
 	return d->nombre;
 }
 
@@ -89,28 +93,16 @@ bool Existe_dir(directorio d, Cadena nombreDir){
 directorio Insert_dir(directorio dInsrt, directorio d){
 
 	directorio dirAux = d;
-	directorio dirRet;
-	Cadena nomInsrt = Nombre_directorio(dInsrt), nomDir;
-	printf("Me traje el nombre del directorio a ingresar y es: %s \n",nomInsrt); // Prueba, BORRAR antes de entregar
-
+	directorio dirRet = Null_directorio();
+	Cadena nomInsrt, nomDir,;
+	nomInsrt = Nombre_directorio(dInsrt);
+	
 	int resultComp;
 	bool agregado = false;
-	printf("HOLA COMO ESTAS VOS");
-	nomDir = Nombre_directorio(d);
-	printf("El nombre del directorio es: %s",nomDir);
-
-	if(nomDir == "RAIZ"){
-		printf("Estoy en el directorio RAIZ");
-	}
-
-
-
-
-
-
+	
 	if(isEmpty_dir(d)){
 		Snoc_Directorio(dInsrt,dirRet);		
-	} else if(isEmpty_dir(Tail_directorio(d))){
+	} else if (isEmpty_dir(Tail_directorio(d))){
 		nomDir = Nombre_directorio(d);
 		resultComp = strcmp(nomDir, nomInsrt);
 		if(resultComp > 0){

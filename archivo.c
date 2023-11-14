@@ -129,5 +129,11 @@ Cadena nombre_y_extension_ar(archivo a){
 	
 	cout << "cadena ret: "<<ret<<endl;
 	
+	/*Cadena aux = new char[MAX_NOMBRE+MAX_EXT+1]; //El +1 es por el .
+	for (int i=0; m < (MAX_NOMBRE+MAX_EXT+1); i++) {
+		aux[i] = txtIngresar[m];
+	}
+	return ax;*/
+	
 	return ret;
 }
