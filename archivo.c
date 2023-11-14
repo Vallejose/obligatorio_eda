@@ -119,3 +119,15 @@ archivo Insertar_cont_arch(archivo a, contenido c){
 	aux -> cont = c;
 	return aux;
 }
+
+Cadena nombre_y_extension_ar(archivo a){
+	//Dado un archivo, retorna el nombre y la extension como una cadena 
+	
+	Cadena nomAux = a->nombre;
+	Cadena extAux = a->exten;
+	Cadena ret = strcat(nomAux, extAux);
+	
+	cout << "cadena ret: "<<ret<<endl;
+	
+	return ret;
+}

@@ -33,8 +33,12 @@ Cadena add_chars(Cadena txtIngresar, int espacioUsado);
 //con el texto ingrado por el usuario hasta llegar al maximo permitido
 
 
-Cadena del_chars(Cadena txtborrar, int espacioLiberar);
-//Elimina una n de caracteres de una cadena de texto dada por el usuario
+Cadena del_chars_end(Cadena txtborrar, int espacioLiberar);
+//Elimina los n ultimos de caracteres de una cadena de texto dada por el usuario
+//Pre: La cadena no puede ser vacio
+
+Cadena del_chars_init(Cadena txtborrar, int espacioLiberar);
+//Elimina los n primeros de caracteres de una cadena de texto dada por el usuario
 //Pre: La cadena no puede ser vacio
 
 #endif

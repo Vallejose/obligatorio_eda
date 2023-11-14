@@ -62,7 +62,7 @@ list_archivos Snoc_listArchivos(archivo a, list_archivos ar){
 	}
 }
 
-// Revisoar
+// Revisar
 list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Inserta un archivo de manera ordenada, en una lista ordenada
 
@@ -116,3 +116,36 @@ list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Retorna true si ar es vacia y false en caso contrario;
 	return(ar==NULL);
  }
+ 
+bool existe_arch(list_archivos l, Cadena nombreAr){
+	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
+	
+	/*if(IsEmpty_listArchivos(l){
+		return false;
+	} else {
+		while(!IsEmpty_listArchivos(l)){
+			Cadena nombreEvaluar = Head_listArchivos(l);
+			if(strcmp(nombreEvaluar, nombreAr) == 0){
+				return true;
+			}
+			l = l->siguiente;
+		}
+		return false;
+	}*/
+	
+	cout << "estoy en existe_arch" <<endl;
+	
+	while(!IsEmpty_listArchivos(l)){
+		Cadena nombreAux = nombre_y_extension_ar(Head_listArchivos(l));
+		cout << "nombre y ext a evaluar: " << nombreAux <<endl;
+		cout << "nombre archivo y ext: " << nombreAr << endl;
+		if(int i = strcmp(nombreAux, nombreAr) == 0) {
+			cout <<"resultado strcmp: " << i << endl;
+			return true;
+		}
+		cout << "estoy en el while" << endl;
+		l = l->siguiente;
+	}
+
+	return false;
+}

@@ -41,4 +41,8 @@ list_archivos Insert_listArchivos(archivo a, list_archivos ar);
  bool IsEmpty_listArchivos(list_archivos ar);
 //Retorna true si ar es vacia y false en caso contrario;
 
+bool existe_arch(list_archivos l, Cadena nombreAr);
+	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
+
+
 #endif

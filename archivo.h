@@ -59,4 +59,6 @@ Cadena Extraer_Ext(Cadena nomArchivo);
 //Dada un nombre y la extension, retorna la ext del archivo
 //Pre: extension no puede ser vacia
 
+Cadena nombre_y_extension_ar(archivo a);
+//Dado un archivo, retorna el nombre y la extension como una cadena
 #endif

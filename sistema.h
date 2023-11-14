@@ -49,7 +49,7 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo);
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
 
-bool existe_arch(list_archivos l, Cadena nombreAr);
+//bool existe_arch(list_archivos l, Cadena nombreAr);
 	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
 	//Pre: lista no es vacia
 
