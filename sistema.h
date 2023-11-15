@@ -49,7 +49,7 @@ TipoRet CREATEFILE (Sistema &s, Cadena nombreArchivo);
 // Crea un nuevo archivo en el directorio actual.
 // Para mas detalles ver letra.
 
-bool existe_arch(list_archivos l, Cadena nombreAr);
+//bool existe_arch(list_archivos l, Cadena nombreAr);
 	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
 	//Pre: lista no es vacia
 
@@ -96,6 +96,9 @@ TipoRet REPLACE (Sistema &s, Cadena nombreArchivo, Cadena texto1, Cadena texto2)
 
 directorio Dir_act(Sistema s);
 //retorna el directorio actual del sistema s-
+
+bool comprobar_nombre(Cadena nombre);
+// Devuelve true si el nombre del directorio es valido y false en caso contrario
 
 #endif
 

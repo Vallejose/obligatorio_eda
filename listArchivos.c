@@ -116,3 +116,22 @@ list_archivos Insert_listArchivos(archivo a, list_archivos ar){
 //Retorna true si ar es vacia y false en caso contrario;
 	return(ar==NULL);
  }
+ 
+bool existe_arch(list_archivos l, Cadena nombreAr){
+	//Devuelve true si existe el archivo en la lista de archivos, false en caso contrario
+	bool extension = false;
+	Cadena nomArAux = Extraer_Nombre(nombreAr, extension);
+	Cadena extArAux = Extraer_Ext(nombreAr);
+	
+	while(!IsEmpty_listArchivos(l)){
+		Cadena nombreAux = Nombre_archivo(Head_listArchivos(l));
+		Cadena extAux = Extension_archivo(Head_listArchivos(l));
+		
+		if((strcmp(nombreAux, nomArAux) == 0) && strcmp(extAux, extArAux) == 0){
+		
+			return true;
+		}
+		l = l->siguiente;
+	}
+	return false;
+}
