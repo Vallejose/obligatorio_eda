@@ -1,11 +1,11 @@
-todo: main.o sistema.o directorio.o archivo.o listArchivos.o contenido.o
-	g++ -o main main.o sistema.o directorio.o archivo.o listArchivos.o contenido.o
+todo: main.o sistema.o lista_directorios.o archivo.o listArchivos.o contenido.o
+	g++ -o main main.o sistema.o lista_directorios.o archivo.o listArchivos.o contenido.o
 main.o: main.c
 	g++ -c main.c
 sistema.o: sistema.h sistema.c
 	g++ -c sistema.c
-directorio.o: directorio.h directorio.c
-	g++ -c directorio.c
+lista_directorios.o: lista_directorios.h lista_directorios.c
+	g++ -c lista_directorios.c
 archivo.o: archivo.h archivo.c
 	g++ -c archivo.c
 listArchivos.o: listArchivos.h listArchivos.c

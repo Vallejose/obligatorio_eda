@@ -10,7 +10,8 @@
 #include <iostream>
 
 #include "sistema.h"
-#include "directorio.h"
+//#include "directorio.h"
+#include "lista_directorios.h"
 #include "listArchivos.h"
 #include "archivo.h"
 #include "contenido.h"
@@ -140,11 +141,17 @@ TipoRet DIR (Sistema &s, Cadena parametro){
 	
 	list_archivos l_aux = listArchs(Dir_act(s));
 	Cadena nomDir = Nombre_directorio(Dir_act(s));
+
+	directorio dirInt = Directorio_interno(Dir_act(s));
 	cout << nomDir << endl;
 	if (IsEmpty_listArchivos(l_aux)){
 		cout << "Directorio vacio\n";
 	} else {
 		if(parametro != NULL){
+
+			//Agregar la impresion del directorio siguiente SI NO ES NULO
+
+
 			while(l_aux != NULL){				
 				Cadena nomAr = Nombre_archivo(Head_listArchivos(l_aux));
 				Cadena extAr = Extension_archivo(Head_listArchivos(l_aux));
